@@ -82,9 +82,9 @@
   --radius-md:     12px;
   --radius-lg:     20px;
 
-  /* Type */
-  --font-display: "Fraunces", "Source Serif 4", Georgia, serif;
-  --font-body:    "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+  /* Type — all sans-serif */
+  --font-display: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body:    "Inter", system-ui, -apple-system, sans-serif;
 }
 
 /* ---------- Reset ---------- */
@@ -135,13 +135,11 @@ em { font-style: italic; }
   color: var(--color-text-muted);
   margin-bottom: var(--space-lg);
 }
-.eyebrow--prism {
-  background: var(--gradient-prism-linear);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
+.eyebrow--prism { color: var(--color-prism-orange); }
+.eyebrow--red    { color: var(--color-prism-red); }
+.eyebrow--green  { color: var(--color-prism-green); }
+.eyebrow--blue   { color: var(--color-prism-blue); }
+.eyebrow--violet { color: var(--color-prism-violet); }
 .lede {
   font-family: var(--font-display);
   font-weight: 300;
@@ -208,6 +206,9 @@ em { font-style: italic; }
   -webkit-backdrop-filter: saturate(140%) blur(16px);
   border-bottom-color: var(--color-border-subtle);
   padding: var(--space-md) 0;
+}
+.nav--on-dark {
+  color: var(--color-text-inverse);
 }
 .nav--on-dark.nav--scrolled {
   background: rgba(10, 10, 10, 0.72);
@@ -513,11 +514,8 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
 }
 .hero__title em {
   font-style: italic;
-  background: var(--gradient-prism-linear);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  font-weight: 400;
+  color: var(--color-prism-orange);
 }
 .hero__subtitle {
   font-family: var(--font-display);
@@ -601,12 +599,10 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
   display: block;
   font-size: 3rem;
   font-family: var(--font-display);
+  font-weight: 400;
   line-height: 1;
   margin-bottom: var(--space-md);
-  background: var(--gradient-prism-linear);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-prism-orange);
 }
 .quote__attr {
   margin-top: var(--space-lg);
@@ -716,13 +712,15 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
 .movement__num {
   font-family: var(--font-display);
   font-size: 2.25rem;
-  font-weight: 300;
-  background: var(--gradient-prism-linear);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 400;
   letter-spacing: -0.02em;
+  color: var(--color-prism-orange);
 }
+.movement:nth-child(1) .movement__num { color: var(--color-prism-red); }
+.movement:nth-child(2) .movement__num { color: var(--color-prism-orange); }
+.movement:nth-child(3) .movement__num { color: var(--color-prism-green); }
+.movement:nth-child(4) .movement__num { color: var(--color-prism-blue); }
+.movement:nth-child(5) .movement__num { color: var(--color-prism-violet); }
 .movement__body h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: var(--space-sm); }
 .movement__body p { margin: 0; color: var(--color-text-secondary); font-size: 1rem; }
 .section--dark .movement__body p { color: var(--color-text-inverse-mute); }
