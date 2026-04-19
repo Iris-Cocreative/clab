@@ -406,16 +406,27 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
   color: inherit;
   border: 1px solid currentColor;
   opacity: 0.85;
+  transition: transform var(--duration-quick) var(--ease-gentle),
+              background-color var(--duration-medium) var(--ease-gentle),
+              color var(--duration-medium) var(--ease-gentle),
+              border-color var(--duration-medium) var(--ease-gentle),
+              opacity var(--duration-quick) var(--ease-gentle);
 }
 .btn--ghost::before { display: none; }
+/* Default light context: hover fills dark, text goes light */
 .btn--ghost:hover {
   opacity: 1;
-  background: currentColor;
+  background-color: var(--color-ground-deep);
   color: var(--color-ground-white);
+  border-color: var(--color-ground-deep);
 }
-/* On dark contexts the button text is light; hover bg becomes light; swap text to dark */
+/* Dark context (hero, dark sections): hover fills light, text goes dark */
 .section--dark .btn--ghost:hover,
-.hero .btn--ghost:hover { color: var(--color-ground-deep); }
+.hero .btn--ghost:hover {
+  background-color: var(--color-ground-white);
+  color: var(--color-ground-deep);
+  border-color: var(--color-ground-white);
+}
 
 .link-inline {
   display: inline-flex;
