@@ -749,42 +749,83 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
 }
 .field textarea { min-height: 140px; resize: vertical; }
 
-/* ---------- Pathway cards ---------- */
+/* ---------- Doorway (pathway) grid ---------- */
+.pathway-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px) {
+  .pathway-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
+}
+@media (min-width: 1100px) {
+  .pathway-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+}
+
+/* Doorway card — arched top via elliptical border-radius */
 .pathway {
   display: flex;
   flex-direction: column;
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
+  padding: clamp(90px, 11vw, 130px) var(--space-xl) var(--space-xl);
   background: var(--color-ground-white);
   border: 1px solid var(--color-border-subtle);
-  transition: transform var(--duration-medium) var(--ease-gentle),
-              border-color var(--duration-medium) var(--ease-gentle);
-  min-height: 320px;
+  min-height: 440px;
   position: relative;
   overflow: hidden;
+  /* Top corners: horizontal 50% of width (meet at peak), vertical ~20% of height */
+  border-radius: 50% 50% 14px 14px / 22% 22% 14px 14px;
+  transition: transform var(--duration-medium) var(--ease-gentle),
+              border-color var(--duration-medium) var(--ease-gentle),
+              box-shadow var(--duration-medium) var(--ease-gentle),
+              background var(--duration-medium) var(--ease-gentle);
 }
-.pathway::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gradient-prism-linear);
-  opacity: 0;
-  transition: opacity var(--duration-medium) var(--ease-gentle);
+.pathway:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-border-emphasis);
+  box-shadow: 0 24px 54px -34px rgba(0,0,0,0.22);
 }
-.pathway:hover { transform: translateY(-4px); border-color: var(--color-border-emphasis); }
-.pathway:hover::before { opacity: 1; }
+/* Per-doorway accent — each pathway gets its own slice of the spectrum */
+.pathway-grid > .pathway:nth-child(1):hover {
+  border-color: rgba(232, 128, 48, 0.55);
+  box-shadow: 0 24px 54px -30px rgba(232,96,48,0.38);
+  background: linear-gradient(180deg, rgba(240,192,32,0.05) 0%, rgba(232,64,64,0.03) 45%, transparent 70%);
+}
+.pathway-grid > .pathway:nth-child(2):hover {
+  border-color: rgba(48, 176, 96, 0.55);
+  box-shadow: 0 24px 54px -30px rgba(48,176,96,0.38);
+  background: linear-gradient(180deg, rgba(240,192,32,0.06) 0%, rgba(48,176,96,0.04) 45%, transparent 70%);
+}
+.pathway-grid > .pathway:nth-child(3):hover {
+  border-color: rgba(48, 96, 208, 0.55);
+  box-shadow: 0 24px 54px -30px rgba(48,96,208,0.38);
+  background: linear-gradient(180deg, rgba(48,176,96,0.05) 0%, rgba(48,96,208,0.04) 45%, transparent 70%);
+}
+.pathway-grid > .pathway:nth-child(4):hover {
+  border-color: rgba(128, 48, 192, 0.55);
+  box-shadow: 0 24px 54px -30px rgba(128,48,192,0.38);
+  background: linear-gradient(180deg, rgba(64,48,160,0.05) 0%, rgba(128,48,192,0.04) 45%, transparent 70%);
+}
+
 .pathway__prompt {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
+  text-align: center;
 }
-.pathway h3 { font-size: 1.65rem; font-weight: 400; margin-bottom: var(--space-md); }
-.pathway p { flex: 1; }
-.pathway .link-inline { margin-top: var(--space-md); align-self: flex-start; }
+.pathway h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+.pathway p { flex: 1; text-align: center; }
+.pathway .link-inline {
+  margin-top: var(--space-md);
+  align-self: center;
+}
 
 /* ---------- Movements list ---------- */
 .movements { display: grid; gap: 0; }
