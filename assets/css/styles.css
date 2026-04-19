@@ -82,9 +82,12 @@
   --radius-md:     12px;
   --radius-lg:     20px;
 
-  /* Type — all sans-serif */
-  --font-display: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
-  --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+  /* Type — Josefin Sans throughout */
+  --font-display: "Josefin Sans", system-ui, -apple-system, sans-serif;
+  --font-body:    "Josefin Sans", system-ui, -apple-system, sans-serif;
+
+  /* Button gradient — subtler 3-color sunset */
+  --gradient-btn: linear-gradient(100deg, #F08030 0%, #E84040 50%, #8030C0 100%);
 }
 
 /* ---------- Reset ---------- */
@@ -128,9 +131,9 @@ em { font-style: italic; }
 .eyebrow {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-text-muted);
   margin-bottom: var(--space-lg);
@@ -223,30 +226,62 @@ em { font-style: italic; }
 .nav__brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
   color: inherit;
 }
 .nav__mark {
-  width: 28px;
-  height: 28px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--gradient-prism);
   position: relative;
-  transition: transform var(--duration-slow) var(--ease-breathe);
+  flex-shrink: 0;
+  --mx: 0px;
+  --my: 0px;
+  transition: filter 400ms var(--ease-gentle);
 }
+.nav__mark:hover,
+.nav__brand:hover .nav__mark {
+  filter: saturate(1.15) brightness(1.05);
+}
+/* The "iris" — inner hole, moves subtly with the pointer */
 .nav__mark::after {
   content: "";
   position: absolute;
-  inset: 7px;
+  inset: 9px;
   border-radius: 50%;
   background: var(--color-ground-white);
+  transform: translate(calc(var(--mx) * 0.5), calc(var(--my) * 0.5));
+  transition: transform 400ms var(--ease-gentle), background 300ms ease;
 }
 .nav--on-dark .nav__mark::after { background: var(--color-ground-deep); }
-.nav__brand:hover .nav__mark { transform: rotate(45deg); }
+.footer .nav__mark::after,
+.footer__brand .nav__mark::after { background: var(--color-ground-deep); }
+
+/* The "pupil" — tiny center dot, moves a little more */
+.nav__mark-eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-ground-deep);
+  transform: translate(
+    calc(-50% + (var(--mx) * 1)),
+    calc(-50% + (var(--my) * 1))
+  );
+  transition: transform 400ms var(--ease-gentle), background 300ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.nav--on-dark .nav__mark-eye,
+.footer .nav__mark-eye,
+.footer__brand .nav__mark-eye { background: var(--color-ground-white); }
 .nav__links {
   display: flex;
   align-items: center;
@@ -255,22 +290,43 @@ em { font-style: italic; }
   margin: 0; padding: 0;
 }
 .nav__link {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: inherit;
-  opacity: 0.8;
+  opacity: 0.85;
   position: relative;
   padding: 4px 0;
-  transition: opacity var(--duration-quick) var(--ease-gentle);
+  letter-spacing: 0.01em;
+  transition: opacity var(--duration-quick) var(--ease-gentle),
+              color var(--duration-medium) var(--ease-gentle);
 }
-.nav__link:hover { opacity: 1; }
-.nav__link[aria-current="page"] { opacity: 1; }
-.nav__link[aria-current="page"]::after {
+.nav__link::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -4px;
-  height: 1.5px;
-  background: var(--gradient-prism-linear);
+  left: 0; right: 0; bottom: -5px;
+  height: 2px;
   border-radius: 2px;
+  background: var(--gradient-prism-linear);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 400ms var(--ease-gentle);
+}
+.nav__link:hover { opacity: 1; }
+.nav__link:hover::after,
+.nav__link[aria-current="page"]::after { transform: scaleX(1); }
+.nav__link[aria-current="page"] { opacity: 1; }
+
+/* Per-item gradient accents — each nav item gets its own slice of the spectrum */
+.nav__links > li:nth-child(1) .nav__link::after {
+  background: linear-gradient(90deg, #E84040 0%, #F08030 100%);
+}
+.nav__links > li:nth-child(2) .nav__link::after {
+  background: linear-gradient(90deg, #F0C020 0%, #30B060 100%);
+}
+.nav__links > li:nth-child(3) .nav__link::after {
+  background: linear-gradient(90deg, #30B060 0%, #3060D0 100%);
+}
+.nav__links > li:nth-child(4) .nav__link::after {
+  background: linear-gradient(90deg, #4030A0 0%, #8030C0 100%);
 }
 .nav__toggle {
   display: none;
@@ -332,7 +388,7 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
 .btn::before {
   content: "";
   position: absolute; inset: 0;
-  background: var(--gradient-prism-linear);
+  background: var(--gradient-btn);
   opacity: 0;
   transition: opacity var(--duration-medium) var(--ease-gentle);
   z-index: -1;
@@ -352,8 +408,14 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
   opacity: 0.85;
 }
 .btn--ghost::before { display: none; }
-.btn--ghost:hover { opacity: 1; background: currentColor; color: var(--color-ground-white); }
-.section--dark .btn--ghost:hover { color: var(--color-ground-deep); }
+.btn--ghost:hover {
+  opacity: 1;
+  background: currentColor;
+  color: var(--color-ground-white);
+}
+/* On dark contexts the button text is light; hover bg becomes light; swap text to dark */
+.section--dark .btn--ghost:hover,
+.hero .btn--ghost:hover { color: var(--color-ground-deep); }
 
 .link-inline {
   display: inline-flex;
@@ -530,11 +592,29 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotat
 .hero__actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
 
 .hero__mandala {
-  width: min(100%, 420px);
+  width: min(100%, 480px);
   aspect-ratio: 1;
   margin-inline: auto;
   position: relative;
-  animation: breathe 8s var(--ease-breathe) infinite;
+  animation: breathe 10s var(--ease-breathe) infinite;
+}
+.hero__mandala svg { overflow: visible; }
+.hero__mandala .layer-d1,
+.hero__mandala .layer-d2,
+.hero__mandala .layer-d3,
+.hero__mandala .layer-d4,
+.hero__mandala .layer-spokes {
+  transform-origin: 200px 200px;
+  transform-box: fill-box;
+}
+.hero__mandala .layer-d1     { animation: mandala-spin 180s linear infinite; }
+.hero__mandala .layer-d2     { animation: mandala-spin 120s linear infinite reverse; }
+.hero__mandala .layer-d3     { animation: mandala-spin  90s linear infinite; }
+.hero__mandala .layer-d4     { animation: mandala-spin  60s linear infinite reverse; }
+.hero__mandala .layer-spokes { animation: mandala-spin 240s linear infinite; }
+@keyframes mandala-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 @keyframes breathe {
   0%, 100% { transform: scale(1); opacity: 0.95; }

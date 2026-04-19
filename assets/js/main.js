@@ -61,4 +61,52 @@
       link.setAttribute('aria-current', 'page');
     }
   });
+
+  // ---- Logo pull effect — hole follows the pointer, pupil a little more ----
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    const marks = document.querySelectorAll('.nav__mark');
+    if (marks.length) {
+      const RADIUS = 260;   // distance from mark where the pull begins
+      const MAX_PULL = 5;   // max px of "pull" at zero distance
+      let rafId = null;
+      let lastX = 0, lastY = 0;
+
+      function update() {
+        marks.forEach(function (mark) {
+          const rect = mark.getBoundingClientRect();
+          // skip offscreen marks
+          if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = lastX - cx;
+          const dy = lastY - cy;
+          const dist = Math.hypot(dx, dy);
+          if (dist > RADIUS) {
+            mark.style.setProperty('--mx', '0px');
+            mark.style.setProperty('--my', '0px');
+            return;
+          }
+          const factor = (1 - dist / RADIUS) * MAX_PULL;
+          const ux = dist ? dx / dist : 0;
+          const uy = dist ? dy / dist : 0;
+          mark.style.setProperty('--mx', (ux * factor).toFixed(2) + 'px');
+          mark.style.setProperty('--my', (uy * factor).toFixed(2) + 'px');
+        });
+        rafId = null;
+      }
+
+      window.addEventListener('pointermove', function (e) {
+        lastX = e.clientX;
+        lastY = e.clientY;
+        if (rafId == null) rafId = window.requestAnimationFrame(update);
+      }, { passive: true });
+
+      document.addEventListener('pointerleave', function () {
+        marks.forEach(function (mark) {
+          mark.style.setProperty('--mx', '0px');
+          mark.style.setProperty('--my', '0px');
+        });
+      });
+    }
+  }
 })();

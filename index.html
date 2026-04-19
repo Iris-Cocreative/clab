@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -22,7 +22,7 @@
   <header class="nav nav--on-dark" id="site-nav">
     <div class="container nav__inner">
       <a href="/" class="nav__brand" aria-label="C.Lab home">
-        <span class="nav__mark" aria-hidden="true"></span>
+        <span class="nav__mark" aria-hidden="true"><span class="nav__mark-eye"></span></span>
         <span>C.Lab</span>
       </a>
       <nav aria-label="Primary">
@@ -49,8 +49,11 @@
           A more fulfilling life. A more loving world. <em>Here. Now.</em>
         </h1>
         <p class="hero__subtitle">
-          Consciousness. Community. Creativity. Contribution.
-          For the love of life, and for the brief time we have here together.
+          A field for deep transformation. Retreats, monthly circles, and
+          gatherings where inner work, relational practice, culture building,
+          and systems change are woven together.
+          <br/>
+          <em>Consciousness, community, creativity, contribution.</em>
         </p>
         <div class="hero__actions">
           <a href="the-work.html" class="btn">
@@ -73,34 +76,57 @@
             </linearGradient>
             <radialGradient id="torusGlow" cx="50%" cy="50%" r="50%">
               <stop offset="60%" stop-color="rgba(247,245,242,0)"/>
-              <stop offset="100%" stop-color="rgba(247,245,242,0.15)"/>
+              <stop offset="100%" stop-color="rgba(247,245,242,0.18)"/>
             </radialGradient>
           </defs>
-          <g transform="translate(200 200)" fill="none" stroke="url(#prism)" stroke-width="0.8" opacity="0.85">
-            <circle r="180" opacity="0.3"/>
-            <circle r="165" opacity="0.45"/>
-            <circle r="150" opacity="0.6"/>
-            <circle r="135" opacity="0.75"/>
-            <circle r="120" opacity="0.9"/>
-            <circle r="105" opacity="0.75"/>
-            <circle r="90"  opacity="0.6"/>
-            <circle r="75"  opacity="0.45"/>
-            <circle r="60"  opacity="0.3"/>
-            <g stroke-width="0.5" opacity="0.5">
-              <line x1="-180" y1="0" x2="180" y2="0"/>
-              <line x1="0" y1="-180" x2="0" y2="180"/>
-              <line x1="-127" y1="-127" x2="127" y2="127"/>
-              <line x1="-127" y1="127" x2="127" y2="-127"/>
-              <line x1="-156" y1="-90" x2="156" y2="90"/>
-              <line x1="-156" y1="90" x2="156" y2="-90"/>
-              <line x1="-90" y1="-156" x2="90" y2="156"/>
-              <line x1="-90" y1="156" x2="90" y2="-156"/>
+
+          <g fill="none" stroke="url(#prism)" stroke-width="0.8">
+            <!-- Concentric circles — the radii the diamond tips align to -->
+            <g class="layer-circles" opacity="0.55">
+              <circle cx="200" cy="200" r="180"/>
+              <circle cx="200" cy="200" r="150"/>
+              <circle cx="200" cy="200" r="120"/>
+              <circle cx="200" cy="200" r="90"/>
+              <circle cx="200" cy="200" r="60"/>
+              <circle cx="200" cy="200" r="30"/>
             </g>
-            <g stroke-width="1" opacity="0.85">
-              <path d="M 0 -100 L 100 0 L 0 100 L -100 0 Z"/>
-              <path d="M 0 -70 L 70 0 L 0 70 L -70 0 Z" transform="rotate(45)"/>
+
+            <!-- Axis + diagonal spokes — very slow drift -->
+            <g class="layer-spokes" stroke-width="0.5" opacity="0.35">
+              <line x1="200" y1="20"  x2="200" y2="380"/>
+              <line x1="20"  y1="200" x2="380" y2="200"/>
+              <line x1="73.7" y1="73.7" x2="326.3" y2="326.3"/>
+              <line x1="326.3" y1="73.7" x2="73.7" y2="326.3"/>
+            </g>
+
+            <!-- Diamond layer 1 — outermost, slowest -->
+            <g class="layer-d1" opacity="0.85" stroke-width="1">
+              <path d="M 200 20 L 380 200 L 200 380 L 20 200 Z"/>
+            </g>
+
+            <!-- Diamond layer 2 — 150 radius, reverse rotation -->
+            <g class="layer-d2" opacity="0.8" stroke-width="0.9">
+              <path d="M 200 50 L 350 200 L 200 350 L 50 200 Z"/>
+            </g>
+
+            <!-- Diamond layer 3 — nested pair at 120 and 90 -->
+            <g class="layer-d3" opacity="0.85" stroke-width="0.9">
+              <path d="M 200 80 L 320 200 L 200 320 L 80 200 Z"/>
+              <path d="M 200 110 L 290 200 L 200 290 L 110 200 Z"/>
+            </g>
+
+            <!-- Diamond layer 4 — inner 8-point star at r=60 + tight diamond at r=30 -->
+            <g class="layer-d4" opacity="0.9" stroke-width="1">
+              <!-- Diamond at r=60 -->
+              <path d="M 200 140 L 260 200 L 200 260 L 140 200 Z"/>
+              <!-- Square at r=60 (rotated 45° from the diamond) — tips land on the circle r=60 -->
+              <path d="M 157.57 157.57 L 242.43 157.57 L 242.43 242.43 L 157.57 242.43 Z"/>
+              <!-- Innermost diamond at r=30 -->
+              <path d="M 200 170 L 230 200 L 200 230 L 170 200 Z"/>
             </g>
           </g>
+
+          <!-- Outer soft glow -->
           <circle cx="200" cy="200" r="190" fill="url(#torusGlow)"/>
         </svg>
       </div>
@@ -113,33 +139,37 @@
     <div class="container">
       <div class="grid-asym">
         <div class="reveal">
-          <span class="eyebrow">What is this?</span>
-          <h2>A small field for a different kind of life.</h2>
+          <span class="eyebrow">What This Is</span>
+          <h2>We are here to help you <em>come home to yourself.</em></h2>
         </div>
         <div class="prose reveal reveal--delay-1">
           <p class="lede">
-            C.Lab is a nonprofit running retreats, monthly circles, and local gatherings.
-            We work with people who are tired of performing their lives and ready to
-            practice something else.
+            C.Lab has language, maps, teachings, and practices. A growing community
+            of fifty-some alumni. Six adult retreats held. A young women's retreat.
+            Monthly Sunday circles. Gatherings forming in France, Quebec, and
+            Northern California. We're no longer experimental.
           </p>
           <p>
-            What we're up to underneath all of that is mending splits. Between mind
-            and body. Between self and other. Between humans and the living world.
-            The splits that don't usually get named, but everyone feels.
+            Underneath the retreats and circles, the aim is simple enough to name.
+            Come home to yourself. Live from your deeper being. Move from the
+            suffering and fear of the separate self into the joy and fulfillment
+            of the connected self.
           </p>
           <p>
-            And re-enchantment, which isn't a marketing word. It's what starts to
-            happen when the world goes from flat back to alive.
+            From a two-dimensional, beige experience of reality into a life of call,
+            depth, and real aliveness. Back into relationship with yourself, each
+            other, the earth, and the sacred.
           </p>
           <p>
-            Four words we keep coming back to: <em>consciousness, community, creativity,
-            contribution.</em> They tend to come online together, in the right container,
-            with the right people.
+            An integral path of waking up and waking down. The opposite of spiritual
+            bypassing. The opposite of optimizing your way back to business as usual.
+            We call what we're practicing <em>business as unusual</em>. You'll know
+            if it's yours.
           </p>
           <p>
-            We aren't here to help you optimize your life so you can go back to
-            business as usual. We call what we're up to <em>business as unusual</em>.
-            You'll know if it's yours.
+            Four words we keep returning to: <em>consciousness, community, creativity,
+            contribution.</em> They come online together, with the right people, in
+            the right container.
           </p>
         </div>
       </div>
@@ -312,7 +342,7 @@
       <div class="footer__grid">
         <div>
           <a href="/" class="footer__brand">
-            <span class="nav__mark" aria-hidden="true"></span>
+            <span class="nav__mark" aria-hidden="true"><span class="nav__mark-eye"></span></span>
             <span>C.Lab</span>
           </a>
           <p class="footer__tagline">For the Love of Life.</p>
