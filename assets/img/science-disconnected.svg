@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="t">
+<title id="t">Interpretive illustration: an over-active, self-referential hub with the wider network quiet</title>
+<circle cx="100" cy="100" r="74" fill="none" stroke="rgba(38,48,42,0.10)" stroke-width="1"/>
+<g stroke="#B9311D" fill="none" stroke-linecap="round">
+<path d="M155.0,149.5 Q118.7,120.8 143.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q116.2,122.3 130.1,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q113.4,123.2 115.4,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q110.4,123.5 100.0,174.0" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q107.5,123.2 84.6,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q104.7,122.3 69.9,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q102.2,120.8 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M155.0,149.5 Q100.0,118.8 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q114.0,124.2 130.1,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q111.2,125.1 115.4,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q108.3,125.4 100.0,174.0" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q105.3,125.1 84.6,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q102.5,124.2 69.9,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q100.0,122.7 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M143.5,159.9 Q97.8,120.8 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M130.1,167.6 Q108.6,126.6 115.4,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M130.1,167.6 Q105.7,126.9 100.0,174.0" stroke-width="1.05" opacity="0.5"/>
+<path d="M130.1,167.6 Q102.8,126.6 84.6,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M130.1,167.6 Q100.0,125.7 69.9,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M130.1,167.6 Q97.5,124.2 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M130.1,167.6 Q95.3,122.3 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M115.4,172.4 Q102.9,127.8 100.0,174.0" stroke-width="1.05" opacity="0.5"/>
+<path d="M115.4,172.4 Q100.0,127.5 84.6,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M115.4,172.4 Q97.2,126.6 69.9,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M115.4,172.4 Q94.7,125.1 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M115.4,172.4 Q92.5,123.2 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M100.0,174.0 Q97.1,127.8 84.6,172.4" stroke-width="1.05" opacity="0.5"/>
+<path d="M100.0,174.0 Q94.3,126.9 69.9,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M100.0,174.0 Q91.7,125.4 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M100.0,174.0 Q89.6,123.5 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M84.6,172.4 Q91.4,126.6 69.9,167.6" stroke-width="1.05" opacity="0.5"/>
+<path d="M84.6,172.4 Q88.8,125.1 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M84.6,172.4 Q86.6,123.2 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M69.9,167.6 Q86.0,124.2 56.5,159.9" stroke-width="1.05" opacity="0.5"/>
+<path d="M69.9,167.6 Q83.8,122.3 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+<path d="M56.5,159.9 Q81.3,120.8 45.0,149.5" stroke-width="1.05" opacity="0.5"/>
+</g>
+<circle cx="100.0" cy="26.0" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="115.4" cy="27.6" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="130.1" cy="32.4" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="143.5" cy="40.1" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="155.0" cy="50.5" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="164.1" cy="63.0" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="170.4" cy="77.1" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="173.6" cy="92.3" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="173.6" cy="107.7" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="170.4" cy="122.9" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="164.1" cy="137.0" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="155.0" cy="149.5" r="3.4" fill="#B9311D"/>
+<circle cx="143.5" cy="159.9" r="3.4" fill="#B9311D"/>
+<circle cx="130.1" cy="167.6" r="3.4" fill="#B9311D"/>
+<circle cx="115.4" cy="172.4" r="3.4" fill="#B9311D"/>
+<circle cx="100.0" cy="174.0" r="3.4" fill="#B9311D"/>
+<circle cx="84.6" cy="172.4" r="3.4" fill="#B9311D"/>
+<circle cx="69.9" cy="167.6" r="3.4" fill="#B9311D"/>
+<circle cx="56.5" cy="159.9" r="3.4" fill="#B9311D"/>
+<circle cx="45.0" cy="149.5" r="3.4" fill="#B9311D"/>
+<circle cx="35.9" cy="137.0" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="29.6" cy="122.9" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="26.4" cy="107.7" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="26.4" cy="92.3" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="29.6" cy="77.1" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="35.9" cy="63.0" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="45.0" cy="50.5" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="56.5" cy="40.1" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="69.9" cy="32.4" r="2.1" fill="rgba(38,48,42,0.22)"/>
+<circle cx="84.6" cy="27.6" r="2.1" fill="rgba(38,48,42,0.22)"/>
+</svg>

@@ -1,0 +1,70 @@
+# ==========================================================================
+# C.Lab website — what stays local
+#
+# This repository is the public website and nothing else. Brand source
+# artwork, client documents, plans, transcripts and working files are kept
+# out of it deliberately: this repo is world readable and is served at
+# clab.iriscocreative.com.
+#
+# Put anything that should not be published in _local/. It will never be
+# committed, and it sits alongside the site so it is easy to work with.
+# ==========================================================================
+
+# Local working directories — never published
+_local/
+_brand/
+_client/
+_drafts/
+
+# Design and document source files
+*.sketch
+*.fig
+*.ai
+*.eps
+*.psd
+*.indd
+*.afdesign
+*.afphoto
+*.docx
+*.doc
+*.pptx
+*.key
+*.pages
+*.numbers
+*.xlsx
+
+# Internal planning and notes
+*-BUILD.md
+*-PLAN.md
+NOTES.md
+TODO.md
+transcripts/
+meeting-notes/
+
+# Raw media awaiting selection and compression.
+# Optimised, site-ready assets belong in assets/img/ and are committed.
+_raw-media/
+*.mov
+*.mp4
+*.zip
+
+# Credentials — nothing here should ever exist, but guard anyway
+.env
+.env.*
+*.pem
+*.key.json
+
+# OS and editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Tooling output (none today)
+node_modules/
+dist/
+.cache/

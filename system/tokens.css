@@ -1,0 +1,203 @@
+/* ==========================================================================
+   C.Lab — Design Tokens
+   The single source of truth for every design decision on this site.
+   Nothing below is invented per-page. If a page needs a value that isn't
+   here, the value belongs here first.
+
+   See styleguide.html for the rendered version of this file, with the
+   reasoning and the contrast measurements.
+   ========================================================================== */
+
+:root {
+
+  /* ------------------------------------------------------------------
+     1. COLOUR — NEUTRAL GROUND
+     A warm, paper-like base. Cream is the page; cream-deep is the
+     alternating band that gives the page its rhythm without introducing
+     a third surface. Night is the one dark surface, used for the two
+     moments the page should feel like it drops into depth: the five
+     movements, and the footer.
+     ------------------------------------------------------------------ */
+  --cream:            #F7F3EC;   /* page ground                              */
+  --cream-deep:       #EFE8DA;   /* alternating band                         */
+  --ink:              #26302A;   /* headings, primary text  — 12.34:1 AAA    */
+  --ink-soft:         #4A554C;   /* body text               —  7.05:1 AAA    */
+  --ink-faint:        rgba(74, 85, 76, 0.62); /* fine print, captions        */
+  --night:            #22292A;   /* dark surface                             */
+  --night-raise:      #2B3334;   /* raised card on night                     */
+  --night-text:       #E9E4D8;   /* text on night           — 11.67:1 AAA    */
+  --night-text-soft:  rgba(233, 228, 216, 0.72);
+
+  --line:             rgba(38, 48, 42, 0.14);   /* hairline on light         */
+  --line-strong:      rgba(38, 48, 42, 0.26);
+  --line-night:       rgba(233, 228, 216, 0.14);/* hairline on night         */
+
+  /* ------------------------------------------------------------------
+     2. COLOUR — EARTH ACCENTS
+     Two accent families, both sampled from the retreat materials.
+     Clay carries action (buttons, links). Sage carries the living /
+     relational register.
+
+     IMPORTANT: each family has a decorative value and a text value.
+     The decorative value is the one that looks right at large sizes and
+     as a fill. It does NOT pass WCAG AA as text on cream — the -deep
+     value is the one to use for anything a person has to read.
+     ------------------------------------------------------------------ */
+  --clay:             #B8734C;   /* decorative / fills / large display       */
+  --clay-deep:        #9B5F3E;   /* links, buttons, labels — 4.63:1 AA       */
+  --clay-soft:        #D9A98A;   /* accent text ON night   — 7.04:1 AAA      */
+
+  --sage:             #798870;   /* decorative / fills                       */
+  --sage-deep:        #5B6B54;   /* text on cream          — 5.17:1 AA       */
+
+  /* ------------------------------------------------------------------
+     3. COLOUR — THE FIVE MOVEMENTS
+     Sampled directly from the mandala logo, which is a fifteen-stop hue
+     wheel at a near-constant lightness (33–42%). Five stops are drawn
+     from it, chosen so the set spreads evenly around the wheel and each
+     hue carries the meaning of its movement.
+
+     Three tokens per movement:
+       --mv-x         the logo colour. Decorative use only.
+       --mv-x-ink     readable on cream       (all ≥ 4.6:1)
+       --mv-x-glow    readable on night       (all ≥ 4.6:1)
+
+     Rule: on cream use -ink, on night use -glow. Never the bare token
+     for text. Cosmos on night is 1.61:1 — invisible — which is exactly
+     the mistake the -glow tokens exist to prevent.
+     ------------------------------------------------------------------ */
+  --mv-cosmos:              #3B3E92;   /* indigo — the ground, the night sky */
+  --mv-cosmos-ink:          #3B3E92;   /* 8.29:1 on cream                    */
+  --mv-cosmos-glow:         #878ACF;   /* 4.63:1 on night                    */
+
+  --mv-conditioning:        #B9311D;   /* red — heat, constriction, pattern  */
+  --mv-conditioning-ink:    #B9311D;   /* 5.39:1 on cream                    */
+  --mv-conditioning-glow:   #E56A57;   /* 4.60:1 on night                    */
+
+  --mv-connection:          #238768;   /* teal — relational, living water    */
+  --mv-connection-ink:      #207C60;   /* 4.62:1 on cream                    */
+  --mv-connection-glow:     #2AA27D;   /* 4.63:1 on night                    */
+
+  --mv-creativity:          #C58506;   /* amber — generative warmth          */
+  --mv-creativity-ink:      #956405;   /* 4.63:1 on cream                    */
+  --mv-creativity-glow:     #C58506;   /* 4.75:1 on night                    */
+
+  --mv-contribution:        #6AA914;   /* leaf — growth, giving outward      */
+  --mv-contribution-ink:    #4D7A0E;   /* 4.62:1 on cream                    */
+  --mv-contribution-glow:   #6AA914;   /* 5.14:1 on night                    */
+
+  /* ------------------------------------------------------------------
+     4. TYPE
+     Fraunces (display serif) + Montserrat (sans), agreed 24 Apr 2026.
+     Fraunces is a variable serif with optical sizing — it holds warmth
+     at display sizes without turning decorative. Montserrat carries
+     everything a person reads at length or acts on.
+
+     Division of labour:
+       Fraunces   headings, pull quotes, movement names, stat numbers
+       Montserrat body, UI, labels, buttons, form fields, navigation
+     ------------------------------------------------------------------ */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Modular scale, ~1.25 (major third), fluid where it earns it.
+     Body sits at 17px: large enough to read comfortably, small enough
+     that a 720px measure lands near the 65–75 character ideal. */
+  --fs-display-xl: clamp(2.5rem,  1.6rem + 3.6vw, 4.25rem);  /*  40 → 68  */
+  --fs-display-l:  clamp(1.75rem, 1.3rem + 1.9vw, 2.375rem); /*  28 → 38  */
+  --fs-display-m:  clamp(1.5rem,  1.2rem + 1.3vw, 2.125rem); /*  24 → 34  */
+  --fs-display-s:  clamp(1.25rem, 1.1rem + 0.8vw, 1.625rem); /*  20 → 26  */
+  --fs-body-l:     1.125rem;   /* 18 — lede paragraphs                     */
+  --fs-body:       1.0625rem;  /* 17 — default                             */
+  --fs-body-s:     0.9375rem;  /* 15 — cards, dense blocks                 */
+  --fs-label:      0.8125rem;  /* 13 — eyebrows, buttons, nav              */
+  --fs-micro:      0.75rem;    /* 12 — fine print, footnotes               */
+
+  --lh-tight:  1.15;   /* display xl                                       */
+  --lh-snug:   1.3;    /* headings                                         */
+  --lh-body:   1.65;   /* body copy                                        */
+  --lh-loose:  1.75;   /* long-form passages                               */
+
+  --ls-tight:  -0.01em;  /* display — Fraunces sets a touch wide           */
+  --ls-label:   0.14em;  /* uppercase eyebrows                             */
+  --ls-btn:     0.06em;  /* uppercase button labels                        */
+
+  --fw-light:  300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semi:   600;
+  --fw-bold:   700;
+
+  /* ------------------------------------------------------------------
+     5. SPACE
+     A 4px base. Every margin, padding and gap on the site is one of
+     these ten steps — this is the fix for the unresolved vertical
+     rhythm, where blocks were opening into 300–400px of dead air
+     because spacing was being chosen ad hoc per section.
+     ------------------------------------------------------------------ */
+  --sp-1:  0.25rem;  /*   4 */
+  --sp-2:  0.5rem;   /*   8 */
+  --sp-3:  0.75rem;  /*  12 */
+  --sp-4:  1rem;     /*  16 */
+  --sp-5:  1.5rem;   /*  24 */
+  --sp-6:  2rem;     /*  32 */
+  --sp-7:  3rem;     /*  48 */
+  --sp-8:  4rem;     /*  64 */
+  --sp-9:  6rem;     /*  96 */
+  --sp-10: 8rem;     /* 128 */
+
+  /* Section rhythm. One value, used by every section, so the page
+     breathes at a single consistent interval. */
+  --section-y:       clamp(4.5rem, 3rem + 6vw, 7.5rem);  /* 72 → 120 */
+  --section-y-tight: clamp(3rem,  2rem + 4vw, 4.5rem);   /* 48 →  72 */
+
+  /* ------------------------------------------------------------------
+     6. LAYOUT
+     Three widths, no more. Prose is the default; content is for grids;
+     wide is for the navigation bar only.
+     ------------------------------------------------------------------ */
+  --max-prose:   45rem;   /* 720 — body copy, ~68 characters at 17px */
+  --max-content: 67.5rem; /* 1080 — card grids, section headers      */
+  --max-wide:    75rem;   /* 1200 — nav bar                          */
+  --gutter:      1.75rem; /* 28                                      */
+  --gutter-sm:   1.25rem; /* 20 — under 640px                        */
+
+  /* ------------------------------------------------------------------
+     7. RADIUS, BORDER, ELEVATION
+     Restrained. The page gets its structure from hairlines and surface
+     changes, not from shadow. Two shadows exist and both are quiet.
+     ------------------------------------------------------------------ */
+  --r-sm:   2px;    /* buttons, inputs         */
+  --r-md:   4px;    /* cards, media            */
+  --r-lg:   8px;    /* large media             */
+  --r-pill: 999px;  /* tabs, chips             */
+  --bw:     1px;
+
+  --shadow-sm: 0 1px 2px rgba(38, 48, 42, 0.05);
+  --shadow-md: 0 6px 24px rgba(38, 48, 42, 0.08);
+
+  /* ------------------------------------------------------------------
+     8. MOTION
+     Slow and organic. Nothing on this site should feel snappy — the
+     subject is a long-arc practice, and the motion should agree.
+     Everything here is disabled under prefers-reduced-motion.
+     ------------------------------------------------------------------ */
+  --dur-fast: 160ms;
+  --dur:      240ms;
+  --dur-slow: 600ms;
+  --dur-reveal: 900ms;
+  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);  /* ease-out-quad-ish   */
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ------------------------------------------------------------------
+     9. FOCUS
+     One visible focus ring, used everywhere, never removed.
+     ------------------------------------------------------------------ */
+  --focus-ring: 2px solid var(--clay-deep);
+  --focus-offset: 3px;
+}
+
+/* Focus ring flips to a light colour on dark surfaces. */
+.on-night {
+  --focus-ring: 2px solid var(--clay-soft);
+}
