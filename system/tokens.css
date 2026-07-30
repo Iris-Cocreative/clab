@@ -4,73 +4,92 @@
    See styleguide.html for the rendered version, with the reasoning and the
    contrast measurements.
 
-   The palette is deliberately small: one neutral scale, one accent, and the
-   five movement hues. The spectrum belongs to the logo and to the five
-   movements. It appears nowhere else.
+   The palette is deliberately small: one neutral scale, one accent, one deep
+   surface, and the five movement hues. The spectrum belongs to the logo and
+   to the five movements. It appears nowhere else.
+
+   The neutrals are blue: a coastal scale of slate and sea, set against a warm
+   sand ground. Warm paper, cool ink, brass for action. Nothing else.
    ========================================================================== */
 
 :root {
 
   /* ------------------------------------------------------------------
      1. COLOUR — LIGHT IS THE DEFAULT
-     Nine neutrals forming a single scale, one accent, five movement hues.
-     Every one of these flips under [data-theme="dark"] below, so a page
-     is authored once and works in both.
+     Warm sand grounds, cool blue inks. Every value flips under
+     [data-theme="dark"] below, so a page is authored once.
      ------------------------------------------------------------------ */
-  --bg:          #F6F3EC;   /* the page                                  */
-  --bg-2:        #EFE9DF;   /* alternating band                          */
-  --surface:     #FFFFFF;   /* cards lifted off the page                 */
-  --border:      rgba(26, 23, 34, 0.12);
-  --border-2:    rgba(26, 23, 34, 0.22);
+  --bg:          #F6F3EC;   /* the page. warm sand                       */
+  --bg-2:        #EFEADF;   /* alternating band                          */
+  --surface:     #FFFFFF;
 
-  --text:        #1C1826;   /* headings                 — 15.69:1  AAA   */
-  --text-soft:   #4A4658;   /* body copy                —  8.21:1  AAA   */
-  --text-muted:  #6E6A7B;   /* secondary copy           —  4.72:1  AA    */
-  --text-faint:  #716B7F;   /* labels, captions, hints  —  4.61:1  AA    */
+  --border:      rgba(22, 33, 43, 0.12);
+  --border-2:    rgba(22, 33, 43, 0.22);
 
-  --accent:      #886920;   /* brass. links, rules, small marks — 4.64:1 */
+  --text:        #16212B;   /* headings. deep navy — 14.73:1  AAA        */
+  --text-soft:   #3C4E5E;   /* body copy                —  7.76:1  AAA   */
+  --text-muted:  #47606F;   /* secondary copy           —  5.98:1  AA    */
+  --text-faint:  #5A6C77;   /* labels, captions, hints  —  4.93:1  AA    */
+
+  --accent:      #82641F;   /* brass. the one accent    —  5.00:1  AA    */
+
+  /* The deep surface. A band of open sea dropped into the page, used for
+     the five movements and for one full-bleed moment on each inner page.
+     It does not flip: it is the same navy in both themes, which is what
+     makes it read as depth rather than as "the dark bit". */
+  --deep:        #16212B;
+  --deep-2:      #1E2B37;
+  --deep-text:   #E4DACF;   /* bone on navy            — 11.84:1  AAA    */
+  --deep-soft:   #B7C4CD;
+  --deep-faint:  #7E92A0;   /*                         —  5.06:1  AA     */
+  --deep-line:   rgba(228, 218, 207, 0.20);   /* hairlines on the band   */
+  --deep-line-2: rgba(228, 218, 207, 0.38);   /* graphic strokes         */
 
   /* The five movements. Sampled from the mandala, then tuned so a single
-     value works as both a graphic fill and as text: all ≥ 4.6:1 here. */
-  --c1: #D52428;   /* Cosmos        — 4.61:1 */
+     value works as both a graphic fill and as text. */
+  --c1: #D52428;   /* Cosmos        — 4.61:1 on light */
   --c2: #A25D10;   /* Conditioning  — 4.61:1 */
   --c3: #257E36;   /* Connection    — 4.60:1 */
   --c4: #2771B3;   /* Creativity    — 4.62:1 */
   --c5: #8C3FD6;   /* Contribution  — 4.99:1 */
 
-  /* Surfaces that must adapt but are not part of the scale. */
   --scrim:       rgba(246, 243, 236, 0.78);
   --scrim-solid: rgba(246, 243, 236, 0.98);
   --node-fill:   #FFFFFF;
-  --logo-line:   rgba(26, 23, 34, 0.55);  /* lattice on the mandala mark */
 
   color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-  --bg:          #050508;
-  --bg-2:        #0A0A12;
-  --surface:     #0C0C14;
-  --border:      rgba(255, 255, 255, 0.08);
-  --border-2:    rgba(255, 255, 255, 0.16);
+  /* Deep sea rather than black. The ground is navy, which is what carries
+     the blue through the whole of dark mode. */
+  --bg:          #0B1520;
+  --bg-2:        #101C28;
+  --surface:     #142230;
 
-  --text:        #E8E4DC;   /* 16.05:1  AAA */
-  --text-soft:   #C3BFD0;   /* 11.32:1  AAA */
-  --text-muted:  #8A8798;   /*  5.82:1  AA  */
-  --text-faint:  #7A7687;   /*  4.62:1  AA  */
+  --border:      rgba(232, 228, 220, 0.10);
+  --border-2:    rgba(232, 228, 220, 0.18);
 
-  --accent:      #C0A060;   /*  8.18:1  AAA */
+  --text:        #E8E4DC;   /* 14.50:1  AAA */
+  --text-soft:   #BFCBD6;   /* 11.14:1  AAA */
+  --text-muted:  #8FA4B4;   /*  7.12:1  AAA */
+  --text-faint:  #708796;   /*  4.90:1  AA  */
 
-  --c1: #FF6B6B;   /*  7.34:1 */
-  --c2: #FF9F43;   /*  9.98:1 */
-  --c3: #6BCB77;   /* 10.11:1 */
-  --c4: #4D9DE0;   /*  6.99:1 */
-  --c5: #C77DFF;   /*  7.57:1 */
+  --accent:      #C0A060;   /*  7.39:1  AAA */
 
-  --scrim:       rgba(5, 5, 8, 0.72);
-  --scrim-solid: rgba(5, 5, 8, 0.97);
-  --node-fill:   #0C0C14;
-  --logo-line:   rgba(255, 255, 255, 0.62);
+  /* --deep deliberately does NOT change with the theme. It is the same navy
+     in both, which is what makes it read as depth rather than as "the dark
+     bit": against sand it drops away, against the dark ground it lifts. */
+
+  --c1: #FF6B6B;   /*  6.62:1 on navy */
+  --c2: #FF9F43;   /*  9.01:1 */
+  --c3: #6BCB77;   /*  9.13:1 */
+  --c4: #4D9DE0;   /*  6.32:1 */
+  --c5: #C77DFF;   /*  6.83:1 */
+
+  --scrim:       rgba(11, 21, 32, 0.74);
+  --scrim-solid: rgba(11, 21, 32, 0.97);
+  --node-fill:   #142230;
 
   color-scheme: dark;
 }
@@ -79,37 +98,34 @@
 
   /* ------------------------------------------------------------------
      2. TYPE
-     Two families. Cormorant Garamond carries everything editorial:
-     headings, body copy, quotes. DM Mono carries everything functional:
-     navigation, labels, buttons, captions, numbers.
-
-     The contrast between them is the point. A very large, very light
-     serif against very small, wide-tracked mono is what makes the page
-     feel spacious and deliberate rather than merely tidy.
+     Two families. Cormorant Garamond carries everything editorial,
+     DM Mono everything functional. The contrast between a very large,
+     very light serif and a very small, widely tracked mono is what makes
+     the page feel spacious rather than merely tidy.
      ------------------------------------------------------------------ */
   --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-mono:  'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   /* Cormorant has a small x-height, so its reading size runs large: body
      sits at 19px, which reads about like 16px of a normal face. Do not
-     set it smaller than 17px anywhere copy has to be read. */
-  --fs-display-xl: clamp(3.25rem, 1.6rem + 7vw, 7rem);      /*  52 → 112 */
-  --fs-display-l:  clamp(2.25rem, 1.5rem + 3.4vw, 4rem);    /*  36 →  64 */
-  --fs-display-m:  clamp(1.75rem, 1.3rem + 2.1vw, 2.75rem); /*  28 →  44 */
-  --fs-display-s:  clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem); /* 22 → 30 */
-  --fs-body-l:     1.25rem;    /* 20 — ledes                             */
-  --fs-body:       1.1875rem;  /* 19 — default                           */
-  --fs-body-s:     1.0625rem;  /* 17 — dense blocks. The floor.          */
-  --fs-label:      0.6875rem;  /* 11 — mono. eyebrows, nav, buttons      */
-  --fs-micro:      0.625rem;   /* 10 — mono. hints, fine print           */
+     set it below 17px anywhere copy has to be read. */
+  --fs-display-xl: clamp(3.25rem, 1.6rem + 7vw, 7rem);         /*  52 → 112 */
+  --fs-display-l:  clamp(2.25rem, 1.5rem + 3.4vw, 4rem);       /*  36 →  64 */
+  --fs-display-m:  clamp(1.75rem, 1.3rem + 2.1vw, 2.75rem);    /*  28 →  44 */
+  --fs-display-s:  clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem); /*  22 →  30 */
+  --fs-body-l:     1.25rem;    /* 20 */
+  --fs-body:       1.1875rem;  /* 19 — default */
+  --fs-body-s:     1.0625rem;  /* 17 — the floor */
+  --fs-label:      0.6875rem;  /* 11 — mono */
+  --fs-micro:      0.625rem;   /* 10 — mono */
 
-  --lh-tight:  1.02;   /* display xl. Set tight so scale reads as scale  */
-  --lh-snug:   1.1;    /* headings                                       */
-  --lh-body:   1.75;   /* body copy. Generous, this is a reading page    */
+  --lh-tight:  1.02;
+  --lh-snug:   1.1;
+  --lh-body:   1.75;
   --lh-loose:  1.85;
 
-  --ls-display: -0.02em;  /* Cormorant sets wide; pull it back           */
-  --ls-label:    0.22em;  /* mono eyebrows. Wide on purpose              */
+  --ls-display: -0.02em;
+  --ls-label:    0.22em;
   --ls-nav:      0.18em;
   --ls-btn:      0.16em;
 
@@ -119,43 +135,36 @@
   --fw-semi:   600;
 
   /* ------------------------------------------------------------------
-     3. SPACE
-     A 4px base. Every margin, padding and gap is one of these steps.
+     3. SPACE — a 4px base
      ------------------------------------------------------------------ */
   --sp-1:  0.25rem;  --sp-2:  0.5rem;   --sp-3:  0.75rem;
   --sp-4:  1rem;     --sp-5:  1.5rem;   --sp-6:  2rem;
   --sp-7:  3rem;     --sp-8:  4rem;     --sp-9:  6rem;
   --sp-10: 8rem;     --sp-11: 11rem;
 
-  /* Section rhythm. One value for every section, so the page breathes at
-     a single interval. Set generously: air is the point. */
   --section-y:       clamp(5.5rem, 3rem + 8vw, 11rem);   /*  88 → 176 */
   --section-y-tight: clamp(3.5rem, 2rem + 5vw, 6.5rem);  /*  56 → 104 */
 
   /* ------------------------------------------------------------------
      4. LAYOUT
      ------------------------------------------------------------------ */
-  --max-prose:   42rem;   /* 672 — body copy, ~68 characters at 19px */
-  --max-content: 68rem;   /* 1088 — grids, section heads             */
-  --max-wide:    78rem;   /* 1248 — nav, full-bleed layouts          */
+  --max-prose:   42rem;
+  --max-content: 68rem;
+  --max-wide:    78rem;
   --gutter:      clamp(1.375rem, 6vw, 5rem);
   --nav-h:       4.5rem;
 
   /* ------------------------------------------------------------------
      5. RADIUS, BORDER
-     Nearly square. The page gets its structure from hairlines and space,
-     not from rounded corners or shadow.
      ------------------------------------------------------------------ */
   --r-sm:   2px;
   --r-md:   4px;
-  --r-lg:   12px;   /* media only */
+  --r-lg:   12px;
   --r-pill: 999px;
   --bw:     1px;
 
   /* ------------------------------------------------------------------
      6. MOTION
-     Slow and organic. Everything here is disabled under
-     prefers-reduced-motion.
      ------------------------------------------------------------------ */
   --dur-fast:   180ms;
   --dur:        320ms;
@@ -164,7 +173,7 @@
   --ease:       cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ------------------------------------------------------------------
-     7. FOCUS — one ring, never removed
+     7. FOCUS
      ------------------------------------------------------------------ */
   --focus-ring:   2px solid var(--accent);
   --focus-offset: 3px;

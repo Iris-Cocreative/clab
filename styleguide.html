@@ -91,11 +91,11 @@
   @media (max-width: 40rem) { .logo-row { grid-template-columns: 1fr; } }
   .logo-cell { border: var(--bw) solid var(--border); border-radius: var(--r-md); padding: var(--sp-8); text-align: center; }
   .logo-cell.on-light { background: #F6F3EC; }
-  .logo-cell.on-dark  { background: #050508; }
+  .logo-cell.on-dark  { background: #0B1520; }
   .logo-cell img { width: 120px; margin: 0 auto var(--sp-5); }
   .logo-cell .cap { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.12em; text-transform: uppercase; }
-  .logo-cell.on-light .cap { color: #6E6A7B; }
-  .logo-cell.on-dark .cap  { color: #8A8798; }
+  .logo-cell.on-light .cap { color: #47606F; }
+  .logo-cell.on-dark .cap  { color: #8FA4B4; }
   .clearspace { display: inline-block; margin-top: var(--sp-5); padding: 45px; outline: 1px dashed var(--border-2); }
   .clearspace img { width: 90px; outline: 1px dashed var(--accent); }
 
@@ -142,6 +142,7 @@
       <li><a href="#logo">Logo</a></li>
       <li><a href="#colour">Colour</a></li>
       <li><a href="#movements">Movements</a></li>
+      <li><a href="#graphics">Graphics</a></li>
       <li><a href="#type">Type</a></li>
       <li><a href="#space">Space</a></li>
       <li><a href="#components">Components</a></li>
@@ -224,10 +225,12 @@
 <section class="sg-sec" id="colour">
   <div class="wrap wrap--content">
     <h2 class="display-m">Colour</h2>
-    <p class="intro">One neutral scale, one accent, and the five movement hues. That is the whole palette. The spectrum belongs to the logo and to the five movements; it appears nowhere else, so those two can carry it without competition.</p>
+    <p class="intro">One neutral scale, one accent, one deep surface, and the five movement hues. That is the whole palette. The spectrum belongs to the logo and to the five movements; it appears nowhere else, so those two can carry it without competition.</p>
+
+    <p class="intro" style="margin-top:var(--sp-5)"><strong style="color:var(--text)">The neutrals are blue.</strong> A coastal scale of slate and sea set against a warm sand ground: warm paper, cool ink, brass for action. Nothing in the scale is a neutral grey, which is what stops the page feeling like a document.</p>
 
     <div class="sg-note">
-      <strong>The earlier palette had two accent families and three variants of each.</strong> Clay and sage both competed with the logo, and with the movements, and with each other. Collapsing to a single brass accent is what lets the mandala read as the only colourful thing on the page.
+      <strong>The earlier palette had two accent families and three variants of each.</strong> Clay and sage both competed with the logo, and with the movements, and with each other. Collapsing to a single brass accent, and putting the blue into the neutrals rather than adding it as a second accent, is what lets the mandala read as the only colourful thing on the page.
     </div>
 
     <h3 class="sg-sub">Neutral scale</h3>
@@ -244,8 +247,43 @@
     </div>
 
     <div class="sg-note">
-      <strong>Every text value clears WCAG AA in both modes.</strong> The faint value was originally lighter and measured 2.3 : 1; it was darkened until it passed, because it carries eyebrows and captions, which people read.
+      <strong>Every text value clears WCAG AA on both grounds in both modes.</strong> Each was tuned against the darker of the two grounds, not the lighter, so nothing fails when it lands on the alternating band.
     </div>
+
+    <h3 class="sg-sub">The deep band</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">A band of open sea dropped into the page. It is the <strong style="color:var(--text)">same navy in both themes</strong>, which is what makes it read as depth rather than as "the dark bit": against sand it drops away, against the dark ground it lifts. Each inner page gets exactly one, and the five movements sit in one on the homepage.</p>
+
+    <div class="sw-grid">
+      <div class="sw"><div class="sw-chip" style="background:var(--deep)"></div><div class="sw-b"><div class="sw-name">Deep</div><div class="sw-var">--deep</div><div class="sw-use">The band. Does not flip with the theme.</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--deep-text)"></div><div class="sw-b"><div class="sw-name">Deep Text</div><div class="sw-var">--deep-text</div><div class="sw-use">Bone on navy.</div><span class="ratio pass">11.8 : 1 &middot; AAA</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--deep-faint)"></div><div class="sw-b"><div class="sw-name">Deep Faint</div><div class="sw-var">--deep-faint</div><div class="sw-use">Eyebrows and graphic labels on the band.</div><span class="ratio pass">5.1 : 1 &middot; AA</span></div></div>
+    </div>
+
+    <div class="sg-note">
+      <strong>The band redefines its own tokens.</strong> Because it is navy whichever theme is active, <span class="mono">.band</span> re-points <span class="mono">--text</span>, <span class="mono">--border</span>, <span class="mono">--node-fill</span> and the five movement hues to the values that work on navy. Components drop into it unchanged, and the mandala automatically uses its light-lattice file.
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE GRAPHICS ===================== -->
+<section class="sg-sec" id="graphics">
+  <div class="wrap wrap--content">
+    <h2 class="display-m">Page graphics</h2>
+    <p class="intro">Four ideas in one geometric language, taken from the mandala: circles, arcs, rings, horizons. Each inner page carries one, on its deep band. They are drawn, not photographed, so they hold their own until the real imagery arrives, and they do not pretend to be it.</p>
+
+    <div class="scroll-x">
+      <table class="spec">
+        <thead><tr><th>Page</th><th>Graphic</th><th>What it says</th></tr></thead>
+        <tbody>
+          <tr><td>About</td><td>Three widening rings</td><td>Self, then others, then the living world. The homepage makes this claim in words; here it is the shape of the page.</td></tr>
+          <tr><td>Offerings</td><td>A wheel of six arcs</td><td>One wheel, six ways in. Every offering is a different door into the same five movements.</td></tr>
+          <tr><td>Resources</td><td>A horizon of rules</td><td>Sea, and an index of things waiting to be filled in.</td></tr>
+          <tr><td>Contribute</td><td>Widening ripples</td><td>One point, moving outward.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body-s" style="margin-top:var(--sp-6);color:var(--text-muted)">The offering rows on the homepage carry the same idea at small scale: each row's mark is one sixth of the same circle, so the index and the wheel are visibly the same object.</p>
   </div>
 </section>
 

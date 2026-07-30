@@ -403,7 +403,7 @@ section { padding-block: var(--section-y); position: relative; }
    to any number of items. */
 .offer-list { border-top: var(--bw) solid var(--border); max-width: var(--max-content); margin-inline: auto; }
 .offer {
-  display: grid; grid-template-columns: auto 1fr auto; align-items: baseline;
+  display: grid; grid-template-columns: auto auto 1fr auto; align-items: center;
   gap: var(--sp-5);
   padding: var(--sp-6) var(--sp-2);
   border-bottom: var(--bw) solid var(--border);
@@ -423,7 +423,7 @@ section { padding-block: var(--section-y); position: relative; }
 }
 .offer:hover .offer-go { color: var(--accent); }
 @media (max-width: 36rem) {
-  .offer { grid-template-columns: auto 1fr; }
+  .offer { grid-template-columns: auto auto 1fr; }
   .offer-go { display: none; }
 }
 
@@ -453,7 +453,9 @@ cite {
    position drives which movement is active. The mandala is the map: the
    logo sits at the centre and the five movements arrange around it.
    -------------------------------------------------------------------------- */
-.movements { padding: 0; border-top: var(--bw) solid var(--border); }
+/* The movements section is a deep band, so it sets its own padding to zero
+   and lets the sticky stage fill the height. */
+.movements { padding-block: 0; overflow: visible; }
 .movements-head { padding: var(--section-y) var(--gutter) 0; max-width: var(--max-content); margin-inline: auto; }
 
 .mv-scroll { height: 460vh; position: relative; }
@@ -621,6 +623,122 @@ img.media { background: none; border: 0; margin-inline: auto; max-width: 15rem; 
   font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.1em;
   color: var(--text-faint); text-align: center;
 }
+
+/* --------------------------------------------------------------------------
+   THE DEEP BAND
+   A band of open sea dropped into the page. Full bleed, and the same navy in
+   both themes, which is what makes it read as depth rather than as "the dark
+   bit". Each inner page gets exactly one, carrying one graphic idea.
+   -------------------------------------------------------------------------- */
+.band {
+  background: var(--deep);
+  color: var(--deep-soft);
+  padding-block: clamp(5rem, 3rem + 8vw, 10rem);
+  position: relative;
+  border-block: var(--bw) solid var(--deep-line);
+  /* No overflow clipping here: the movements module is a band and relies on
+     position: sticky, which an overflow-hidden ancestor silently breaks.
+     None of the graphics extend past their viewBox, so nothing needs it. */
+
+  /* The band is navy in both themes, so anything inside it needs the values
+     that work on navy, whichever theme is active. Redefining them here means
+     components drop into the band unchanged. */
+  --c1: #FF6B6B;  /* 5.88:1 on --deep */
+  --c2: #FF9F43;  /* 8.00:1 */
+  --c3: #6BCB77;  /* 8.11:1 */
+  --c4: #4D9DE0;  /* 5.61:1 */
+  --c5: #C77DFF;  /* 6.07:1 */
+  --text:       var(--deep-text);
+  --text-soft:  var(--deep-soft);
+  --text-muted: var(--deep-soft);
+  --text-faint: var(--deep-faint);
+  --border:     var(--deep-line);
+  --border-2:   rgba(228, 218, 207, 0.30);
+  --node-fill:  var(--deep);
+}
+
+/* Inside a band the mark always sits on navy, so it always wants the
+   light-lattice file regardless of theme. */
+.band .logo .is-light { display: none; }
+.band .logo .is-dark  { display: block; }
+.band h1, .band h2, .band h3 { color: var(--deep-text); }
+.band .eyebrow    { color: var(--deep-faint); }
+.band .lede       { color: var(--deep-soft); }
+.band .fine-print { color: var(--deep-faint); }
+.band p           { color: var(--deep-soft); }
+.band .link-more  { color: var(--deep-text); border-bottom-color: var(--deep-line); }
+.band .link-more:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.band .statement  { color: var(--deep-text); }
+
+.band-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+  max-width: var(--max-content); margin-inline: auto; padding-inline: var(--gutter);
+}
+.band-grid--wide { max-width: var(--max-wide); }
+@media (max-width: 52rem) {
+  .band-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .band-art { order: -1; }
+}
+
+/* --------------------------------------------------------------------------
+   PAGE GRAPHICS
+   Four ideas in one geometric language, drawn from the mandala: circles,
+   arcs, rings, horizons. All inline SVG, all small enough to stay cheap, and
+   all still if the visitor asks for reduced motion.
+   -------------------------------------------------------------------------- */
+.gfx { width: 100%; max-width: 30rem; margin-inline: auto; display: block; overflow: visible; }
+.gfx text {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  fill: var(--deep-faint);
+}
+
+/* 1 — RINGS OF CONNECTION (About)
+   Self, then others, then the living world. The homepage already makes this
+   claim in words; here it is the shape of the page. */
+.gfx-rings .ring { fill: none; stroke: var(--deep-line-2); stroke-width: 1; }
+.gfx-rings .ring--lit { stroke: var(--deep-faint); }
+.gfx-rings .core { fill: var(--accent); }
+.gfx-rings .pulse {
+  fill: none; stroke: var(--accent); stroke-width: 1;
+  transform-origin: 240px 240px;
+  animation: ripple 9s var(--ease) infinite;
+  opacity: 0;
+}
+.gfx-rings .pulse:nth-of-type(2) { animation-delay: 3s; }
+.gfx-rings .pulse:nth-of-type(3) { animation-delay: 6s; }
+@keyframes ripple {
+  0%   { transform: scale(0.06); opacity: 0; }
+  12%  { opacity: 0.55; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* 2 — OFFERING ARCS
+   Each offering is one sixth of the wheel. Six marks, one circle. */
+.arc-mark { width: 30px; height: 30px; flex-shrink: 0; overflow: visible; }
+.arc-mark .track { fill: none; stroke: var(--border-2); stroke-width: 2; }
+.arc-mark .lit   { fill: none; stroke: var(--c); stroke-width: 2.5; stroke-linecap: round; }
+
+/* 3 — HORIZON (Resources)
+   A field of rules at a horizon. Reads as sea, and as an index of things
+   waiting to be filled in. */
+.gfx-horizon line { stroke: var(--deep-line-2); stroke-width: 1; }
+.gfx-horizon .lit { stroke: var(--deep-faint); }
+.gfx-horizon .sun { fill: none; stroke: var(--accent); stroke-width: 1.25; }
+
+/* 4 — RIPPLE (Contribute)
+   One point, widening outward. Giving, drawn. */
+.gfx-ripple .ring { fill: none; stroke: var(--deep-line-2); stroke-width: 1; }
+.gfx-ripple .core { fill: var(--accent); }
+.gfx-ripple .wave {
+  fill: none; stroke: var(--accent); stroke-width: 1;
+  transform-origin: 240px 240px;
+  animation: ripple 7s var(--ease) infinite;
+  opacity: 0;
+}
+.gfx-ripple .wave:nth-of-type(2) { animation-delay: 2.33s; }
+.gfx-ripple .wave:nth-of-type(3) { animation-delay: 4.66s; }
 
 /* --------------------------------------------------------------------------
    REVEAL

@@ -37,7 +37,7 @@ check any part of it in either mode.
 
 Everything is plain HTML. Open a file, change the words, save, commit.
 
-Four rules keep the site coherent:
+Five rules keep the site coherent:
 
 1. **Values come from `system/tokens.css`.** If a page needs a colour, size or
    spacing value that is not there, add it to the tokens file and to the
@@ -45,11 +45,15 @@ Four rules keep the site coherent:
 2. **Do not write dark-mode styles.** Every token flips between light and dark,
    so a page authored once works in both. If something looks wrong in dark mode,
    the fix is almost always that a raw value was used instead of a token.
-3. **The five movement colours are for the movements only.** They colour the
+3. **The deep band is the same navy in both themes.** `.band` re-points its
+   own tokens so components drop into it unchanged, and it must never be given
+   `overflow: hidden` — the movements module inside it relies on
+   `position: sticky`, which an overflow-hidden ancestor silently breaks.
+4. **The five movement colours are for the movements only.** They colour the
    rail, nodes, spokes, movement eyebrow and numeral. Everything else uses the
    single brass `--accent`. This is what keeps the mandala the only colourful
    thing on the page.
-4. **The mandala is always an `<img>`, never an inline `<svg><use>`.** Inlined,
+5. **The mandala is always an `<img>`, never an inline `<svg><use>`.** Inlined,
    the 76-path artwork re-rasterises on every scroll frame inside the sticky
    movements module and freezes the page. The styleguide explains this under
    Performance.
