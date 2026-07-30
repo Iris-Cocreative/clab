@@ -6,178 +6,114 @@
 <meta name="robots" content="noindex, follow">
 <title>C.Lab Brand Guidelines</title>
 <meta name="description" content="Level 1 brand guidelines for C.Lab: logo, colour, typography, spacing, components and the rules that hold them together.">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('clab-theme');
+    if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/img/clab-mandala-on-light.svg" type="image/svg+xml">
 <link rel="stylesheet" href="system/tokens.css">
 <link rel="stylesheet" href="system/base.css">
 <style>
-  /* Guidelines-only presentation. None of this ships on the site itself. */
-  .sg-head {
-    padding-block: var(--sp-9) var(--sp-8);
-    border-bottom: var(--bw) solid var(--line);
-    background:
-      radial-gradient(ellipse at 50% -30%, color-mix(in srgb, var(--clay) 12%, transparent), transparent 60%),
-      var(--cream);
-  }
-  .sg-head .mark { width: 96px; margin-bottom: var(--sp-6); }
-  .sg-head h1 { font-size: var(--fs-display-l); }
-  .sg-head .sub { margin-top: var(--sp-4); max-width: 40rem; }
+  /* Guidelines-only presentation. None of this ships on the site. */
+  .sg-head { padding: var(--sp-9) 0 var(--sp-8); border-bottom: var(--bw) solid var(--border); }
+  .sg-head .logo { width: 84px; height: 84px; margin-bottom: var(--sp-6); }
   .sg-meta {
-    margin-top: var(--sp-6);
-    display: flex;
-    gap: var(--sp-5);
-    flex-wrap: wrap;
-    font-size: var(--fs-label);
-    color: var(--ink-faint);
+    margin-top: var(--sp-6); display: flex; gap: var(--sp-6); flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: var(--fs-micro);
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint);
   }
-
-  .sg-nav {
+  .sg-bar {
     position: sticky; top: 0; z-index: 40;
-    background: color-mix(in srgb, var(--cream) 94%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: var(--bw) solid var(--line);
+    background: var(--scrim); backdrop-filter: blur(14px);
+    border-bottom: var(--bw) solid var(--border);
   }
-  .sg-nav ul {
-    display: flex; gap: var(--sp-3) var(--sp-5); list-style: none;
-    margin: 0; padding-block: var(--sp-4);
-    flex-wrap: wrap;
+  .sg-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-5); padding-block: var(--sp-4); }
+  .sg-bar ul { display: flex; gap: var(--sp-3) var(--sp-5); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  .sg-bar a {
+    font-family: var(--font-mono); font-size: var(--fs-micro);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none; white-space: nowrap;
   }
-  .sg-nav a {
-    font-size: var(--fs-label); font-weight: var(--fw-semi);
-    letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--ink-soft); text-decoration: none; white-space: nowrap;
-  }
-  .sg-nav a:hover { color: var(--ink); }
+  .sg-bar a:hover { color: var(--text); }
 
-  .sg-section { padding-block: var(--section-y); border-bottom: var(--bw) solid var(--line); }
-  .sg-section > .wrap > h2 { font-size: var(--fs-display-m); }
-  .sg-section > .wrap > .intro {
-    margin-top: var(--sp-4); max-width: 42rem; font-size: var(--fs-body);
-  }
+  .sg-sec { padding-block: var(--sp-9); border-bottom: var(--bw) solid var(--border); }
+  .sg-sec > .wrap > .intro { margin-top: var(--sp-5); max-width: 58ch; color: var(--text-muted); }
   .sg-sub {
-    margin-top: var(--sp-8); font-family: var(--font-sans);
-    font-size: var(--fs-label); font-weight: var(--fw-semi);
-    letter-spacing: var(--ls-label); text-transform: uppercase;
-    color: var(--clay-deep); padding-bottom: var(--sp-3);
-    border-bottom: var(--bw) solid var(--line);
+    margin-top: var(--sp-8); padding-bottom: var(--sp-3);
+    border-bottom: var(--bw) solid var(--border);
+    font-family: var(--font-mono); font-size: var(--fs-label);
+    letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--accent);
   }
   .sg-note {
-    margin-top: var(--sp-5); padding: var(--sp-5);
-    border-left: 3px solid var(--clay); background: var(--cream-deep);
-    border-radius: 0 var(--r-md) var(--r-md) 0;
-    font-size: var(--fs-body-s);
+    margin-top: var(--sp-5); padding: var(--sp-5) var(--sp-6);
+    border-left: 2px solid var(--accent); background: var(--bg-2);
+    font-size: var(--fs-body-s); color: var(--text-muted);
   }
-  .sg-note strong { color: var(--ink); }
+  .sg-note strong { color: var(--text); }
 
-  /* Swatches */
-  .swatches { display: grid; gap: var(--sp-4); margin-top: var(--sp-5); }
-  .sw-grid-3 { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
-  .sw {
-    border: var(--bw) solid var(--line); border-radius: var(--r-md); overflow: hidden;
-    background: var(--cream);
+  .sw-grid { display: grid; gap: var(--sp-4); margin-top: var(--sp-5); grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+  .sw { border: var(--bw) solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+  .sw-chip { height: 72px; }
+  .sw-b { padding: var(--sp-4); }
+  .sw-name { font-size: var(--fs-body-s); color: var(--text); }
+  .sw-var { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--text-faint); margin-top: 2px; }
+  .sw-use { font-size: var(--fs-micro); font-family: var(--font-mono); line-height: 1.6; color: var(--text-muted); margin-top: var(--sp-3); }
+  .ratio {
+    display: inline-block; margin-top: var(--sp-3); padding: 2px var(--sp-2);
+    border-radius: var(--r-pill); font-family: var(--font-mono); font-size: var(--fs-micro);
+    border: var(--bw) solid var(--border-2); color: var(--text-muted);
   }
-  .sw-chip { height: 84px; display: flex; align-items: flex-end; padding: var(--sp-3); }
-  .sw-chip span {
-    font-size: var(--fs-micro); font-weight: var(--fw-semi);
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .sw-body { padding: var(--sp-4); }
-  .sw-name { font-size: var(--fs-body-s); font-weight: var(--fw-semi); color: var(--ink); }
-  .sw-var {
-    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-    font-size: var(--fs-micro); color: var(--ink-faint); margin-top: 2px;
-  }
-  .sw-use { font-size: var(--fs-micro); margin-top: var(--sp-3); color: var(--ink-soft); }
-  .sw-ratio {
-    display: inline-block; margin-top: var(--sp-3);
-    font-size: var(--fs-micro); font-weight: var(--fw-semi);
-    padding: 2px var(--sp-2); border-radius: var(--r-pill);
-  }
-  .pass { background: color-mix(in srgb, var(--mv-contribution) 18%, transparent); color: var(--mv-contribution-ink); }
-  .warn { background: color-mix(in srgb, var(--mv-creativity) 20%, transparent); color: var(--mv-creativity-ink); }
-  .stop { background: color-mix(in srgb, var(--mv-conditioning) 16%, transparent); color: var(--mv-conditioning-ink); }
+  .ratio.pass { border-color: var(--c3); color: var(--c3); }
+  .ratio.stop { border-color: var(--c1); color: var(--c1); }
 
-  /* Spec tables */
-  .spec { width: 100%; border-collapse: collapse; margin-top: var(--sp-5); font-size: var(--fs-body-s); }
-  .spec th, .spec td {
-    text-align: left; padding: var(--sp-3) var(--sp-4);
-    border-bottom: var(--bw) solid var(--line); vertical-align: top;
-  }
-  .spec th {
-    font-family: var(--font-sans); font-size: var(--fs-micro);
-    font-weight: var(--fw-semi); letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--ink-faint);
-  }
-  .spec code, .mono {
-    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-    font-size: 0.8125rem; color: var(--clay-deep);
-  }
-  .table-scroll { overflow-x: auto; }
+  table.spec { width: 100%; border-collapse: collapse; margin-top: var(--sp-5); font-size: var(--fs-body-s); }
+  table.spec th, table.spec td { text-align: left; padding: var(--sp-3) var(--sp-4); border-bottom: var(--bw) solid var(--border); vertical-align: top; }
+  table.spec th { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
+  table.spec td { color: var(--text-muted); }
+  .mono { font-family: var(--font-mono); font-size: 0.8em; color: var(--accent); }
+  .scroll-x { overflow-x: auto; }
 
-  /* Demo surfaces */
-  .demo {
-    margin-top: var(--sp-5); padding: var(--sp-7);
-    border: var(--bw) solid var(--line); border-radius: var(--r-md);
-    background: var(--cream);
-  }
-  .demo--deep  { background: var(--cream-deep); }
-  .demo--night { background: var(--night); border-color: var(--line-night); }
-  .demo-row { display: flex; gap: var(--sp-4); flex-wrap: wrap; align-items: center; }
+  .demo { margin-top: var(--sp-5); padding: var(--sp-7); border: var(--bw) solid var(--border); border-radius: var(--r-md); }
+  .demo--alt { background: var(--bg-2); }
+  .demo-row { display: flex; gap: var(--sp-5); flex-wrap: wrap; align-items: center; }
 
-  /* Logo blocks */
   .logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); margin-top: var(--sp-5); }
   @media (max-width: 40rem) { .logo-row { grid-template-columns: 1fr; } }
-  .logo-cell {
-    border: var(--bw) solid var(--line); border-radius: var(--r-md);
-    padding: var(--sp-8); text-align: center;
-  }
-  .logo-cell.on-cream { background: var(--cream); }
-  .logo-cell.on-deep  { background: var(--cream-deep); }
-  .logo-cell.on-night { background: var(--night); border-color: var(--line-night); }
-  .logo-cell img { width: 128px; margin: 0 auto var(--sp-5); }
-  .logo-cell .cap {
-    font-size: var(--fs-micro); letter-spacing: 0.08em; text-transform: uppercase;
-    font-weight: var(--fw-semi); color: var(--ink-faint);
-  }
-  .logo-cell.on-night .cap { color: var(--night-text-soft); }
+  .logo-cell { border: var(--bw) solid var(--border); border-radius: var(--r-md); padding: var(--sp-8); text-align: center; }
+  .logo-cell.on-light { background: #F6F3EC; }
+  .logo-cell.on-dark  { background: #050508; }
+  .logo-cell img { width: 120px; margin: 0 auto var(--sp-5); }
+  .logo-cell .cap { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.12em; text-transform: uppercase; }
+  .logo-cell.on-light .cap { color: #6E6A7B; }
+  .logo-cell.on-dark .cap  { color: #8A8798; }
+  .clearspace { display: inline-block; margin-top: var(--sp-5); padding: 45px; outline: 1px dashed var(--border-2); }
+  .clearspace img { width: 90px; outline: 1px dashed var(--accent); }
 
-  .clearspace {
-    position: relative; display: inline-block; margin-top: var(--sp-5);
-    padding: 40px; outline: 1px dashed var(--line-strong);
-  }
-  .clearspace img { width: 80px; outline: 1px dashed var(--clay); }
-
-  /* Type specimens */
-  .spec-line { border-bottom: var(--bw) solid var(--line); padding-block: var(--sp-5); }
+  .spec-line { border-bottom: var(--bw) solid var(--border); padding-block: var(--sp-6); }
   .spec-line:last-child { border-bottom: 0; }
-  .spec-line .meta {
-    font-family: ui-monospace, Menlo, monospace; font-size: var(--fs-micro);
-    color: var(--ink-faint); margin-bottom: var(--sp-3);
-  }
+  .spec-line .meta { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.06em; color: var(--text-faint); margin-bottom: var(--sp-4); }
 
-  /* Space scale */
   .space-row { display: flex; align-items: center; gap: var(--sp-4); padding-block: var(--sp-2); }
-  .space-bar { background: var(--clay); height: 14px; border-radius: 1px; }
-  .space-meta { font-family: ui-monospace, Menlo, monospace; font-size: var(--fs-micro); color: var(--ink-faint); }
+  .space-bar { background: var(--accent); height: 12px; border-radius: 1px; }
+  .space-meta { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--text-faint); }
 
-  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); margin-top: var(--sp-5); }
-  @media (max-width: 40rem) { .do-dont { grid-template-columns: 1fr; } }
-  .dd {
-    border: var(--bw) solid var(--line); border-radius: var(--r-md); padding: var(--sp-5);
-    font-size: var(--fs-body-s);
-  }
-  .dd h4 {
-    font-family: var(--font-sans); font-size: var(--fs-micro); font-weight: var(--fw-semi);
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--sp-3);
-  }
-  .dd--do   { border-left: 3px solid var(--mv-contribution-ink); }
-  .dd--do h4   { color: var(--mv-contribution-ink); }
-  .dd--dont { border-left: 3px solid var(--mv-conditioning-ink); }
-  .dd--dont h4 { color: var(--mv-conditioning-ink); }
-  .dd ul { margin: 0; padding-left: var(--sp-5); }
-  .dd li { margin-bottom: var(--sp-2); }
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); margin-top: var(--sp-5); }
+  @media (max-width: 40rem) { .dd-grid { grid-template-columns: 1fr; } }
+  .dd { border: var(--bw) solid var(--border); border-radius: var(--r-md); padding: var(--sp-5) var(--sp-6); font-size: var(--fs-body-s); color: var(--text-muted); }
+  .dd h4 { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: var(--sp-4); }
+  .dd--do { border-left: 2px solid var(--c3); } .dd--do h4 { color: var(--c3); }
+  .dd--no { border-left: 2px solid var(--c1); } .dd--no h4 { color: var(--c1); }
+  .dd ul { margin: 0; padding-left: var(--sp-5); } .dd li { margin-bottom: var(--sp-2); }
 </style>
 </head>
 <body>
@@ -186,484 +122,329 @@
 
 <header class="sg-head">
   <div class="wrap wrap--content">
-    <img class="mark" src="assets/img/clab-mandala-on-light.svg" alt="">
-    <h1>C.Lab Brand Guidelines</h1>
-    <p class="sub body-l">Level 1. The logo, colour, typography, spacing and components this site is built from, and the reasoning behind each choice. Every value here lives in <span class="mono">system/tokens.css</span>, so the guidelines and the site cannot drift apart.</p>
+    <span class="logo">
+      <img class="is-light" src="assets/img/clab-mandala-on-light.svg" alt="" width="84" height="84">
+      <img class="is-dark" src="assets/img/clab-mandala-on-dark.svg" alt="" width="84" height="84">
+    </span>
+    <h1 class="display-l">C.Lab Brand <span class="em">Guidelines</span></h1>
+    <p class="intro body-l" style="max-width:60ch;margin-top:var(--sp-5);color:var(--text-muted)">Level 1. The logo, colour, typography, spacing and components this site is built from, and the reasoning behind each choice. Every value lives in <span class="mono">system/tokens.css</span>, so the guidelines and the site cannot drift apart.</p>
     <div class="sg-meta">
-      <span>Version 1.0</span>
+      <span>Version 2.0</span>
       <span>Prepared by Iris Cocreative</span>
-      <span>Fonts: Fraunces + Montserrat</span>
+      <span>Cormorant Garamond + DM Mono</span>
     </div>
   </div>
 </header>
 
-<nav class="sg-nav" aria-label="Guidelines sections">
-  <div class="wrap wrap--content">
+<nav class="sg-bar" aria-label="Guidelines sections">
+  <div class="wrap wrap--content sg-bar-inner">
     <ul>
       <li><a href="#logo">Logo</a></li>
       <li><a href="#colour">Colour</a></li>
-      <li><a href="#movements">Five Movements</a></li>
-      <li><a href="#type">Typography</a></li>
+      <li><a href="#movements">Movements</a></li>
+      <li><a href="#type">Type</a></li>
       <li><a href="#space">Space</a></li>
-      <li><a href="#layout">Layout</a></li>
       <li><a href="#components">Components</a></li>
       <li><a href="#motion">Motion</a></li>
-      <li><a href="#access">Accessibility</a></li>
+      <li><a href="#access">Access</a></li>
+      <li><a href="#perf">Performance</a></li>
       <li><a href="#using">Using this</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
   </div>
 </nav>
 
 <main id="main">
 
-<!-- ===================== LOGO ===================== -->
-<section class="sg-section" id="logo">
+<!-- ===================== LIGHT / DARK ===================== -->
+<section class="sg-sec" id="theme">
   <div class="wrap wrap--content">
-    <h2>Logo</h2>
-    <p class="intro">The mandala is the identity and the map. It is a fifteen-stop hue wheel held in a lattice, and it carries the full spectrum so nothing else on the site has to. This is why there is no rainbow type anywhere in these guidelines.</p>
-
-    <h3 class="sg-sub">Variants</h3>
-    <p class="body-s" style="margin-top:var(--sp-5)">Two variants, chosen by the surface behind them. The lattice lines are white in one and filled in the other, so each holds its detail against its intended ground.</p>
-
-    <div class="logo-row">
-      <div class="logo-cell on-cream">
-        <img src="assets/img/clab-mandala-on-light.svg" alt="C.Lab mandala, filled lattice, for light backgrounds">
-        <div class="cap">On light &middot; clab-mandala-on-light.svg</div>
-      </div>
-      <div class="logo-cell on-night">
-        <img src="assets/img/clab-mandala-on-dark.svg" alt="C.Lab mandala, white lattice, for dark backgrounds">
-        <div class="cap">On dark &middot; clab-mandala-on-dark.svg</div>
-      </div>
-    </div>
-
+    <h2 class="display-m">Light and dark</h2>
+    <p class="intro">The site ships in both. Light is the default; a visitor's operating system preference is honoured until they choose explicitly, and the choice is then remembered. <strong style="color:var(--text)">Use the switch in the bar above to check any part of these guidelines in the other mode.</strong></p>
     <div class="sg-note">
-      <strong>Both variants stay alive.</strong> The lattice version is for large use, where the detail is legible and doing work. A minimalist version is for small use, where the lattice fills in and the mark stops reading. The minimalist variant is still being tightened so the C reads clearly at small sizes, and will be added here when it lands.
+      <strong>Author once.</strong> Every colour token flips between the two modes, so a page is built without thinking about theme at all. There is no separate dark stylesheet and no page needs a dark-mode override. A theme script runs before first paint, so the correct mode is painted immediately rather than flashing.
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOGO ===================== -->
+<section class="sg-sec" id="logo">
+  <div class="wrap wrap--content">
+    <h2 class="display-m">Logo</h2>
+    <p class="intro">The mandala is the identity and the map. It is a fifteen-stop hue wheel held in a lattice, and it carries the full spectrum so nothing else has to. This is why there is no rainbow type anywhere in these guidelines, and why the palette below is as quiet as it is.</p>
+
+    <h3 class="sg-sub">Two files, one mark</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">The lattice is drawn dark for light grounds and light for dark grounds. The right one is chosen automatically by the theme.</p>
+    <div class="logo-row">
+      <div class="logo-cell on-light">
+        <img src="assets/img/clab-mandala-on-light.svg" alt="C.Lab mandala with a dark lattice, for light backgrounds">
+        <div class="cap">clab-mandala-on-light.svg</div>
+      </div>
+      <div class="logo-cell on-dark">
+        <img src="assets/img/clab-mandala-on-dark.svg" alt="C.Lab mandala with a light lattice, for dark backgrounds">
+        <div class="cap">clab-mandala-on-dark.svg</div>
+      </div>
     </div>
 
     <h3 class="sg-sub">Clear space and minimum size</h3>
-    <p class="body-s" style="margin-top:var(--sp-5)">Clear space on all four sides is half the width of the mark. Nothing enters that field: no type, no rule, no photograph edge.</p>
-    <div class="clearspace">
-      <img src="assets/img/clab-mandala-on-light.svg" alt="">
-    </div>
-    <div class="table-scroll">
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">Clear space on all four sides is half the width of the mark. Nothing enters that field.</p>
+    <div class="clearspace"><img src="assets/img/clab-mandala-on-light.svg" alt=""></div>
+    <div class="scroll-x">
       <table class="spec">
-        <thead><tr><th>Context</th><th>Size</th><th>Variant</th></tr></thead>
+        <thead><tr><th>Context</th><th>Size</th></tr></thead>
         <tbody>
-          <tr><td>Section centrepiece</td><td>120 to 190px</td><td>Lattice</td></tr>
-          <tr><td>Hero mark</td><td>96 to 148px</td><td>Lattice</td></tr>
-          <tr><td>Navigation</td><td>34px</td><td>Lattice, minimalist when ready</td></tr>
-          <tr><td>Favicon</td><td>32px and below</td><td>Minimalist</td></tr>
-          <tr><td>Absolute minimum</td><td>24px</td><td>Minimalist only</td></tr>
+          <tr><td>Hero and the movements centrepiece</td><td>200 to 440px</td></tr>
+          <tr><td>Navigation</td><td>30px</td></tr>
+          <tr><td>Footer</td><td>28px</td></tr>
+          <tr><td>Absolute minimum</td><td>24px, and only with the minimalist variant when it lands</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="do-dont">
-      <div class="dd dd--do">
-        <h4>Do</h4>
-        <ul>
-          <li>Use the variant that matches the surface behind it.</li>
-          <li>Keep the mark circular and unrotated.</li>
-          <li>Let it sit alone, with its clear space respected.</li>
-        </ul>
-      </div>
-      <div class="dd dd--dont">
-        <h4>Do not</h4>
-        <ul>
-          <li>Recolour, flatten to one colour, or add a gradient.</li>
-          <li>Add a drop shadow, outline or glow.</li>
-          <li>Place it on a busy photograph without a calm area behind it.</li>
-          <li>Stretch, crop, or set it at an angle.</li>
-        </ul>
-      </div>
+    <div class="dd-grid">
+      <div class="dd dd--do"><h4>Do</h4><ul>
+        <li>Let the theme pick the file.</li>
+        <li>Keep it circular and unrotated, except for the slow turn it is given in the hero and the movements.</li>
+        <li>Respect the clear space.</li>
+      </ul></div>
+      <div class="dd dd--no"><h4>Do not</h4><ul>
+        <li>Recolour, flatten to one colour, or add a gradient.</li>
+        <li>Add a shadow, outline or glow.</li>
+        <li>Stretch, crop, or set it at an angle.</li>
+        <li>Place it over a busy photograph without a calm area behind it.</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
 <!-- ===================== COLOUR ===================== -->
-<section class="sg-section" id="colour">
+<section class="sg-sec" id="colour">
   <div class="wrap wrap--content">
-    <h2>Colour</h2>
-    <p class="intro">A warm paper ground, two earth accents, one dark surface. The spectrum belongs to the logo and to the five movements. Everything else stays quiet so those two can speak.</p>
+    <h2 class="display-m">Colour</h2>
+    <p class="intro">One neutral scale, one accent, and the five movement hues. That is the whole palette. The spectrum belongs to the logo and to the five movements; it appears nowhere else, so those two can carry it without competition.</p>
 
-    <h3 class="sg-sub">Neutral ground</h3>
-    <div class="swatches sw-grid-3">
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--cream)"><span style="color:var(--ink-soft)">#F7F3EC</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Cream</div><div class="sw-var">--cream</div>
-          <div class="sw-use">The page. The default ground everywhere.</div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--cream-deep)"><span style="color:var(--ink-soft)">#EFE8DA</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Cream Deep</div><div class="sw-var">--cream-deep</div>
-          <div class="sw-use">Alternating band. Gives the page rhythm without a third surface.</div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--ink)"><span style="color:var(--cream)">#26302A</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Ink</div><div class="sw-var">--ink</div>
-          <div class="sw-use">Headings and primary text.</div>
-          <span class="sw-ratio pass">12.34:1 on cream &middot; AAA</span>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--ink-soft)"><span style="color:var(--cream)">#4A554C</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Ink Soft</div><div class="sw-var">--ink-soft</div>
-          <div class="sw-use">Body copy. The colour most words on the site are set in.</div>
-          <span class="sw-ratio pass">7.05:1 on cream &middot; AAA</span>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--night)"><span style="color:var(--night-text)">#22292A</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Night</div><div class="sw-var">--night</div>
-          <div class="sw-use">The one dark surface. Used twice: the five movements, and the footer.</div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--night-text)"><span style="color:var(--night)">#E9E4D8</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Night Text</div><div class="sw-var">--night-text</div>
-          <div class="sw-use">Text on the night surface.</div>
-          <span class="sw-ratio pass">11.67:1 on night &middot; AAA</span>
-        </div>
-      </div>
+    <div class="sg-note">
+      <strong>The earlier palette had two accent families and three variants of each.</strong> Clay and sage both competed with the logo, and with the movements, and with each other. Collapsing to a single brass accent is what lets the mandala read as the only colourful thing on the page.
     </div>
 
-    <h3 class="sg-sub">Earth accents</h3>
-    <p class="body-s" style="margin-top:var(--sp-5)">Clay carries action. Sage carries the living, relational register. Each family has a decorative value and a text value, and they are not interchangeable.</p>
-
-    <div class="swatches sw-grid-3">
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--clay)"><span style="color:var(--cream)">#B8734C</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Clay</div><div class="sw-var">--clay</div>
-          <div class="sw-use">Decorative only. Fills, borders, large display, the hero wash.</div>
-          <span class="sw-ratio stop">3.39:1 &middot; not for text</span>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--clay-deep)"><span style="color:var(--cream)">#9B5F3E</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Clay Deep</div><div class="sw-var">--clay-deep</div>
-          <div class="sw-use">Buttons, links, eyebrows, stat numbers. Anything a person reads or clicks.</div>
-          <span class="sw-ratio pass">4.63:1 on cream &middot; AA</span>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--clay-soft)"><span style="color:var(--night)">#D9A98A</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Clay Soft</div><div class="sw-var">--clay-soft</div>
-          <div class="sw-use">The clay register on the night surface. Eyebrows and links in dark sections.</div>
-          <span class="sw-ratio pass">7.04:1 on night &middot; AAA</span>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--sage)"><span style="color:var(--cream)">#798870</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Sage</div><div class="sw-var">--sage</div>
-          <div class="sw-use">Decorative only. Fills and illustration.</div>
-          <span class="sw-ratio stop">3.41:1 &middot; not for text</span>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="sw-chip" style="background:var(--sage-deep)"><span style="color:var(--cream)">#5B6B54</span></div>
-        <div class="sw-body">
-          <div class="sw-name">Sage Deep</div><div class="sw-var">--sage-deep</div>
-          <div class="sw-use">Text. Used for the word "connection" and for the community register.</div>
-          <span class="sw-ratio pass">5.17:1 on cream &middot; AA</span>
-        </div>
-      </div>
+    <h3 class="sg-sub">Neutral scale</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">Nine values forming one scale. Ratios shown are against the page ground in the mode you are currently viewing.</p>
+    <div class="sw-grid">
+      <div class="sw"><div class="sw-chip" style="background:var(--bg)"></div><div class="sw-b"><div class="sw-name">Ground</div><div class="sw-var">--bg</div><div class="sw-use">The page.</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--bg-2)"></div><div class="sw-b"><div class="sw-name">Ground 2</div><div class="sw-var">--bg-2</div><div class="sw-use">Alternating band and the footer.</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--text)"></div><div class="sw-b"><div class="sw-name">Text</div><div class="sw-var">--text</div><div class="sw-use">Headings.</div><span class="ratio pass">15.7 : 1 light &middot; 16.1 : 1 dark</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--text-soft)"></div><div class="sw-b"><div class="sw-name">Text Soft</div><div class="sw-var">--text-soft</div><div class="sw-use">Body copy. The default.</div><span class="ratio pass">8.2 : 1 light &middot; 11.3 : 1 dark</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--text-muted)"></div><div class="sw-b"><div class="sw-name">Text Muted</div><div class="sw-var">--text-muted</div><div class="sw-use">Secondary copy and standfirsts.</div><span class="ratio pass">4.7 : 1 light &middot; 5.8 : 1 dark</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--text-faint)"></div><div class="sw-b"><div class="sw-name">Text Faint</div><div class="sw-var">--text-faint</div><div class="sw-use">Eyebrows, captions, hints.</div><span class="ratio pass">4.6 : 1 both</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--accent)"></div><div class="sw-b"><div class="sw-name">Accent</div><div class="sw-var">--accent</div><div class="sw-use">Brass. Links, the italic display accent, small marks.</div><span class="ratio pass">4.6 : 1 light &middot; 8.2 : 1 dark</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:var(--border-2)"></div><div class="sw-b"><div class="sw-name">Border</div><div class="sw-var">--border / --border-2</div><div class="sw-use">Hairlines. The page gets its structure from these, not from shadow.</div></div></div>
     </div>
 
     <div class="sg-note">
-      <strong>The decorative and text split is the single most important rule on this page.</strong> Clay at its natural value measures 3.39:1 against cream, which fails WCAG AA for body text and for a 13px button label. The earlier homepage preview set buttons, links and section labels in it. Clay Deep exists so the colour reads the same and the text passes. When in doubt, use the value whose name ends in <span class="mono">-deep</span>.
+      <strong>Every text value clears WCAG AA in both modes.</strong> The faint value was originally lighter and measured 2.3 : 1; it was darkened until it passed, because it carries eyebrows and captions, which people read.
     </div>
   </div>
 </section>
 
 <!-- ===================== FIVE MOVEMENTS ===================== -->
-<section class="sg-section" id="movements">
+<section class="sg-sec" id="movements">
   <div class="wrap wrap--content">
-    <h2>The Five Movements</h2>
-    <p class="intro">Five hues drawn straight from the mandala, chosen so the set spreads evenly around the wheel and each hue carries the meaning of its movement. This is the only place the spectrum appears outside the logo.</p>
+    <h2 class="display-m">The five movements</h2>
+    <p class="intro">Five hues drawn from the mandala, one per movement, spread evenly around the wheel so the set reads as a whole. Each was then tuned until a single value works as both a graphic fill and as text, which is why there is one token per movement rather than three.</p>
 
-    <div class="table-scroll">
+    <div class="demo">
+      <div style="display:flex;gap:var(--sp-6);flex-wrap:wrap">
+        <div><div style="width:64px;height:64px;border-radius:50%;background:var(--c1)"></div><p class="fine-print" style="margin-top:var(--sp-3)">Cosmos<br>--c1</p></div>
+        <div><div style="width:64px;height:64px;border-radius:50%;background:var(--c2)"></div><p class="fine-print" style="margin-top:var(--sp-3)">Conditioning<br>--c2</p></div>
+        <div><div style="width:64px;height:64px;border-radius:50%;background:var(--c3)"></div><p class="fine-print" style="margin-top:var(--sp-3)">Connection<br>--c3</p></div>
+        <div><div style="width:64px;height:64px;border-radius:50%;background:var(--c4)"></div><p class="fine-print" style="margin-top:var(--sp-3)">Creativity<br>--c4</p></div>
+        <div><div style="width:64px;height:64px;border-radius:50%;background:var(--c5)"></div><p class="fine-print" style="margin-top:var(--sp-3)">Contribution<br>--c5</p></div>
+      </div>
+      <span class="spectrum-rule" style="margin-top:var(--sp-7);width:100%"></span>
+      <p class="fine-print" style="margin-top:var(--sp-3)">The spectrum rule. The one place outside the logo and the movements where all five appear at once.</p>
+    </div>
+
+    <div class="scroll-x">
       <table class="spec">
-        <thead>
-          <tr><th>Movement</th><th>Hue</th><th>Logo value</th><th>On cream</th><th>On night</th><th>Why this hue</th></tr>
-        </thead>
+        <thead><tr><th>Movement</th><th>Light</th><th>Dark</th><th>Why this hue</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong style="color:var(--mv-cosmos-ink)">Cosmos</strong></td><td>Indigo</td>
-            <td><span class="mono">#3B3E92</span></td>
-            <td><span class="mono">#3B3E92</span><br><span class="sw-ratio pass">8.29:1</span></td>
-            <td><span class="mono">#878ACF</span><br><span class="sw-ratio pass">4.63:1</span></td>
-            <td>The ground, the night sky, what holds everything.</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--mv-conditioning-ink)">Conditioning</strong></td><td>Red</td>
-            <td><span class="mono">#B9311D</span></td>
-            <td><span class="mono">#B9311D</span><br><span class="sw-ratio pass">5.39:1</span></td>
-            <td><span class="mono">#E56A57</span><br><span class="sw-ratio pass">4.60:1</span></td>
-            <td>Heat and constriction. The inherited pattern.</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--mv-connection-ink)">Connection</strong></td><td>Teal</td>
-            <td><span class="mono">#238768</span></td>
-            <td><span class="mono">#207C60</span><br><span class="sw-ratio pass">4.62:1</span></td>
-            <td><span class="mono">#2AA27D</span><br><span class="sw-ratio pass">4.63:1</span></td>
-            <td>Relational and living. Water rather than fire.</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--mv-creativity-ink)">Creativity</strong></td><td>Amber</td>
-            <td><span class="mono">#C58506</span></td>
-            <td><span class="mono">#956405</span><br><span class="sw-ratio pass">4.63:1</span></td>
-            <td><span class="mono">#C58506</span><br><span class="sw-ratio pass">4.75:1</span></td>
-            <td>Generative warmth. The moment something is made.</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--mv-contribution-ink)">Contribution</strong></td><td>Leaf</td>
-            <td><span class="mono">#6AA914</span></td>
-            <td><span class="mono">#4D7A0E</span><br><span class="sw-ratio pass">4.62:1</span></td>
-            <td><span class="mono">#6AA914</span><br><span class="sw-ratio pass">5.14:1</span></td>
-            <td>Growth, giving outward.</td>
-          </tr>
+          <tr><td><strong style="color:var(--c1)">Cosmos</strong></td><td><span class="mono">#D52428</span> 4.6 : 1</td><td><span class="mono">#FF6B6B</span> 7.3 : 1</td><td>The first movement, and the warmest point on the wheel.</td></tr>
+          <tr><td><strong style="color:var(--c2)">Conditioning</strong></td><td><span class="mono">#A25D10</span> 4.6 : 1</td><td><span class="mono">#FF9F43</span> 10.0 : 1</td><td>Heat and constriction.</td></tr>
+          <tr><td><strong style="color:var(--c3)">Connection</strong></td><td><span class="mono">#257E36</span> 4.6 : 1</td><td><span class="mono">#6BCB77</span> 10.1 : 1</td><td>Living and relational.</td></tr>
+          <tr><td><strong style="color:var(--c4)">Creativity</strong></td><td><span class="mono">#2771B3</span> 4.6 : 1</td><td><span class="mono">#4D9DE0</span> 7.0 : 1</td><td>Clear and generative.</td></tr>
+          <tr><td><strong style="color:var(--c5)">Contribution</strong></td><td><span class="mono">#8C3FD6</span> 5.0 : 1</td><td><span class="mono">#C77DFF</span> 7.6 : 1</td><td>The far end of the wheel, closing the circle.</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="sg-note">
-      <strong>Three tokens per movement, and the bare one is decorative.</strong> Use <span class="mono">--mv-x-ink</span> on light surfaces and <span class="mono">--mv-x-glow</span> on the night surface. Cosmos at its logo value measures 1.61:1 against night, which is effectively invisible. The glow tokens exist to make that mistake impossible.
-    </div>
-
-    <div class="demo demo--night">
-      <div class="journey">
-        <div class="move" data-mv="cosmos"><div class="dot"></div><span class="name">Cosmos</span></div>
-        <div class="move" data-mv="conditioning"><div class="dot"></div><span class="name">Conditioning</span></div>
-        <div class="move" data-mv="connection"><div class="dot"></div><span class="name">Connection</span></div>
-        <div class="move" data-mv="creativity"><div class="dot"></div><span class="name">Creativity</span></div>
-        <div class="move" data-mv="contribution"><div class="dot"></div><span class="name">Contribution</span></div>
-      </div>
+      <strong>These five are for the movements only.</strong> They colour the rail, the nodes, the spokes, the movement eyebrow and the ghosted numeral, and nothing else. Using one as a general accent would put the site back where it was: too many colours, none of them meaning anything.
     </div>
   </div>
 </section>
 
 <!-- ===================== TYPE ===================== -->
-<section class="sg-section" id="type">
+<section class="sg-sec" id="type">
   <div class="wrap wrap--content">
-    <h2>Typography</h2>
-    <p class="intro">Fraunces and Montserrat, agreed 24 April 2026. Fraunces is a variable serif with optical sizing, so it holds warmth at display sizes without turning decorative. Montserrat carries everything a person reads at length or acts on.</p>
+    <h2 class="display-m">Typography</h2>
+    <p class="intro">Two families. Cormorant Garamond carries everything editorial. DM Mono carries everything functional. The contrast between a very large, very light serif and a very small, widely tracked mono is what makes the page feel spacious rather than merely tidy.</p>
 
-    <div class="sg-note">
-      <strong>A note on the name.</strong> Earlier records of that conversation say "Frances." The typeface is <strong>Fraunces</strong>, a Google font. The two are easy to confuse and only one of them exists.
-    </div>
-
-    <h3 class="sg-sub">Division of labour</h3>
-    <div class="table-scroll">
+    <div class="scroll-x">
       <table class="spec">
         <thead><tr><th>Family</th><th>Carries</th><th>Never</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong style="font-family:var(--font-display)">Fraunces</strong></td>
-            <td>Headings, pull quotes, movement names, offering names, stat numbers, the wordmark.</td>
-            <td>Body copy, buttons, form fields, navigation.</td>
-          </tr>
-          <tr>
-            <td><strong>Montserrat</strong></td>
-            <td>Body copy, navigation, buttons, labels, form fields, captions, fine print.</td>
-            <td>Anything above 26px.</td>
-          </tr>
+          <tr><td><strong style="font-size:1.25rem;color:var(--text)">Cormorant Garamond</strong></td><td>Headings, body copy, quotes, movement names, offering names, statistics.</td><td>Navigation, buttons, labels, captions.</td></tr>
+          <tr><td><strong style="font-family:var(--font-mono);color:var(--text)">DM Mono</strong></td><td>Navigation, eyebrows, buttons, captions, fine print, numbers in the interface.</td><td>Anything longer than a few words.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h3 class="sg-sub">Scale</h3>
-    <p class="body-s" style="margin-top:var(--sp-5)">A major third, roughly 1.25, fluid where it earns it. Body sits at 17px: large enough to read comfortably, small enough that a 720px measure lands near the 65 to 75 character ideal.</p>
+    <div class="sg-note">
+      <strong>Cormorant has a small x-height, so its reading size runs large.</strong> Body sits at 19px, which reads about like 16px of a normal face, with a 1.75 line height. Never set it below 17px where copy has to be read. This is the one rule that keeps an elegant face from becoming an unreadable one.
+    </div>
 
+    <h3 class="sg-sub">Scale</h3>
     <div style="margin-top:var(--sp-5)">
       <div class="spec-line">
-        <div class="meta">--fs-display-xl &middot; 40 to 68px &middot; Fraunces 500 &middot; line-height 1.15</div>
-        <div class="display-xl" style="font-family:var(--font-display);color:var(--ink)">For the Love of Life</div>
+        <div class="meta">--fs-display-xl &middot; 52 &rarr; 112px &middot; Cormorant 300 &middot; line-height 1.02</div>
+        <div class="display-xl" style="color:var(--text)">For the Love of <span class="em">Life</span></div>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-display-l &middot; 28 to 38px &middot; Fraunces 500 &middot; section headings</div>
-        <div class="display-l" style="font-family:var(--font-display);color:var(--ink)">A Growing International Community</div>
+        <div class="meta">--fs-display-l &middot; 36 &rarr; 64px &middot; section headings</div>
+        <div class="display-l" style="color:var(--text)">Getting Real</div>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-display-m &middot; 24 to 34px &middot; Fraunces 500 &middot; thesis statements</div>
-        <div class="display-m" style="font-family:var(--font-display);color:var(--ink)">Disconnection is the root cause.</div>
+        <div class="meta">--fs-display-m &middot; 28 &rarr; 44px &middot; page headings and statements</div>
+        <div class="display-m" style="color:var(--text)">Disconnection is the root cause.</div>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-display-s &middot; 20 to 26px &middot; Fraunces 400 italic &middot; ledes and pull quotes</div>
-        <div class="lede">The modern world disconnects us not only from ourselves, but from each other and the living world.</div>
+        <div class="meta">--fs-display-s &middot; 22 &rarr; 30px &middot; italic &middot; ledes and quotes</div>
+        <div class="lede">Run the experiment. See for yourself.</div>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-body-l &middot; 18px &middot; Montserrat 400 &middot; line-height 1.65</div>
-        <p class="body-l" style="margin:0">C.Lab offers a more complete path to a fulfilling life and loving world.</p>
-      </div>
-      <div class="spec-line">
-        <div class="meta">--fs-body &middot; 17px &middot; Montserrat 400 &middot; the default</div>
+        <div class="meta">--fs-body &middot; 19px &middot; line-height 1.75 &middot; the default</div>
         <p style="margin:0">C.Lab is a reality-tested path to greater connection and aliveness. Rooted in ancient wisdom and modern science, we help you live a more fulfilling life and contribute your gifts to a more loving world.</p>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-body-s &middot; 15px &middot; Montserrat 400 &middot; cards and dense blocks</div>
-        <p class="body-s" style="margin:0">When your brain shifts into greater connectivity, you experience increased insight, creativity and wellbeing.</p>
+        <div class="meta">--fs-body-s &middot; 17px &middot; the floor for readable copy</div>
+        <p class="body-s" style="margin:0;color:var(--text-muted)">When your brain shifts into greater connectivity, you experience increased insight, creativity and wellbeing.</p>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-label &middot; 13px &middot; Montserrat 600 &middot; letter-spacing 0.14em &middot; uppercase</div>
-        <p class="eyebrow" style="margin:0">Ancient Wisdom</p>
+        <div class="meta">--fs-label &middot; 11px &middot; DM Mono &middot; tracking 0.22em &middot; uppercase</div>
+        <p class="eyebrow">A living map</p>
       </div>
       <div class="spec-line">
-        <div class="meta">--fs-micro &middot; 12px &middot; Montserrat 400 &middot; fine print</div>
-        <p class="fine-print" style="margin:0;text-align:left">Interpretive illustration inspired by fMRI research, Imperial College London.</p>
+        <div class="meta">--fs-micro &middot; 10px &middot; DM Mono &middot; captions and fine print</div>
+        <p class="fine-print" style="margin:0">Interpretive illustration inspired by fMRI research, Imperial College London.</p>
       </div>
     </div>
 
-    <h3 class="sg-sub">Rules</h3>
-    <div class="do-dont">
-      <div class="dd dd--do">
-        <h4>Do</h4>
-        <ul>
-          <li>Set headings in Fraunces 500 with letter-spacing -0.01em.</li>
-          <li>Use Fraunces italic for ledes, quotes and movement names.</li>
-          <li>Keep body measure at or under 720px.</li>
-          <li>Set eyebrows uppercase at 0.14em tracking.</li>
-        </ul>
-      </div>
-      <div class="dd dd--dont">
-        <h4>Do not</h4>
-        <ul>
-          <li>Colour type with the spectrum. The logo carries it.</li>
-          <li>Use Fraunces below 18px, where its detail closes up.</li>
-          <li>Set body copy in the display face.</li>
-          <li>Introduce a third family, including for code or numerals.</li>
-        </ul>
-      </div>
+    <h3 class="sg-sub">The italic accent</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">Cormorant's italic is where its character lives. It marks the one word in a heading that should sing, set in the accent colour with <span class="mono">.em</span>. One per heading, never more.</p>
+    <div class="demo demo--alt">
+      <p class="display-m" style="color:var(--text);margin:0">A Growing International <span class="em">Community</span></p>
+    </div>
+
+    <div class="dd-grid">
+      <div class="dd dd--do"><h4>Do</h4><ul>
+        <li>Set display type at weight 300 with tracking -0.02em.</li>
+        <li>Use the italic accent on one word per heading.</li>
+        <li>Keep body measure at or under 42rem.</li>
+        <li>Set every label in DM Mono, uppercase, widely tracked.</li>
+      </ul></div>
+      <div class="dd dd--no"><h4>Do not</h4><ul>
+        <li>Colour type with the movement hues. The logo carries the spectrum.</li>
+        <li>Set Cormorant below 17px for anything read.</li>
+        <li>Set DM Mono in sentences or paragraphs.</li>
+        <li>Introduce a third family.</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
 <!-- ===================== SPACE ===================== -->
-<section class="sg-section" id="space">
+<section class="sg-sec" id="space">
   <div class="wrap wrap--content">
-    <h2>Space and rhythm</h2>
-    <p class="intro">A four pixel base, ten steps. Every margin, padding and gap on the site is one of these. This is the fix for the unresolved vertical rhythm in earlier rounds, where blocks opened into three or four hundred pixels of dead air because spacing was chosen fresh in each section.</p>
+    <h2 class="display-m">Space and rhythm</h2>
+    <p class="intro">A four pixel base, eleven steps. Every margin, padding and gap is one of these. Sections do not set their own vertical padding; they inherit one value, so the page breathes at a single interval and no block can open into accidental dead air.</p>
 
     <div style="margin-top:var(--sp-6)">
-      <div class="space-row"><div class="space-bar" style="width:4px"></div><span class="space-meta">--sp-1 &middot; 4px</span></div>
-      <div class="space-row"><div class="space-bar" style="width:8px"></div><span class="space-meta">--sp-2 &middot; 8px</span></div>
-      <div class="space-row"><div class="space-bar" style="width:12px"></div><span class="space-meta">--sp-3 &middot; 12px</span></div>
-      <div class="space-row"><div class="space-bar" style="width:16px"></div><span class="space-meta">--sp-4 &middot; 16px &middot; paragraph gap</span></div>
-      <div class="space-row"><div class="space-bar" style="width:24px"></div><span class="space-meta">--sp-5 &middot; 24px &middot; default block gap</span></div>
-      <div class="space-row"><div class="space-bar" style="width:32px"></div><span class="space-meta">--sp-6 &middot; 32px</span></div>
-      <div class="space-row"><div class="space-bar" style="width:48px"></div><span class="space-meta">--sp-7 &middot; 48px</span></div>
-      <div class="space-row"><div class="space-bar" style="width:64px"></div><span class="space-meta">--sp-8 &middot; 64px &middot; section header to content</span></div>
-      <div class="space-row"><div class="space-bar" style="width:96px"></div><span class="space-meta">--sp-9 &middot; 96px</span></div>
-      <div class="space-row"><div class="space-bar" style="width:128px"></div><span class="space-meta">--sp-10 &middot; 128px</span></div>
+      <div class="space-row"><div class="space-bar" style="width:4px"></div><span class="space-meta">--sp-1 &middot; 4</span></div>
+      <div class="space-row"><div class="space-bar" style="width:8px"></div><span class="space-meta">--sp-2 &middot; 8</span></div>
+      <div class="space-row"><div class="space-bar" style="width:12px"></div><span class="space-meta">--sp-3 &middot; 12</span></div>
+      <div class="space-row"><div class="space-bar" style="width:16px"></div><span class="space-meta">--sp-4 &middot; 16 &middot; paragraph gap</span></div>
+      <div class="space-row"><div class="space-bar" style="width:24px"></div><span class="space-meta">--sp-5 &middot; 24 &middot; default block gap</span></div>
+      <div class="space-row"><div class="space-bar" style="width:32px"></div><span class="space-meta">--sp-6 &middot; 32</span></div>
+      <div class="space-row"><div class="space-bar" style="width:48px"></div><span class="space-meta">--sp-7 &middot; 48</span></div>
+      <div class="space-row"><div class="space-bar" style="width:64px"></div><span class="space-meta">--sp-8 &middot; 64</span></div>
+      <div class="space-row"><div class="space-bar" style="width:96px"></div><span class="space-meta">--sp-9 &middot; 96 &middot; section head to content</span></div>
+      <div class="space-row"><div class="space-bar" style="width:128px"></div><span class="space-meta">--sp-10 &middot; 128</span></div>
+      <div class="space-row"><div class="space-bar" style="width:176px"></div><span class="space-meta">--sp-11 &middot; 176</span></div>
     </div>
 
-    <h3 class="sg-sub">Section rhythm</h3>
-    <div class="table-scroll">
+    <div class="scroll-x">
       <table class="spec">
         <thead><tr><th>Token</th><th>Value</th><th>Used for</th></tr></thead>
         <tbody>
-          <tr><td><span class="mono">--section-y</span></td><td>72px to 120px, fluid</td><td>Vertical padding on every section. One value, so the page breathes at a single interval.</td></tr>
-          <tr><td><span class="mono">--section-y-tight</span></td><td>48px to 72px, fluid</td><td>The quote band and other interludes that should not feel like full sections.</td></tr>
+          <tr><td><span class="mono">--section-y</span></td><td>88 &rarr; 176px</td><td>Vertical padding on every section.</td></tr>
+          <tr><td><span class="mono">--section-y-tight</span></td><td>56 &rarr; 104px</td><td>Interludes, such as the quote band.</td></tr>
+          <tr><td><span class="mono">--max-prose</span></td><td>672px</td><td>Body copy. Roughly 68 characters at 19px.</td></tr>
+          <tr><td><span class="mono">--max-content</span></td><td>1088px</td><td>Grids, section heads, the footer.</td></tr>
+          <tr><td><span class="mono">--max-wide</span></td><td>1248px</td><td>Navigation and the hero.</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="sg-note">
-      <strong>Sections do not set their own padding.</strong> They inherit <span class="mono">--section-y</span>. If a section needs more air, the answer is a <span class="mono">.section-head</span> or an added element, not a custom margin. This is what keeps the rhythm honest.
-    </div>
-  </div>
-</section>
-
-<!-- ===================== LAYOUT ===================== -->
-<section class="sg-section" id="layout">
-  <div class="wrap wrap--content">
-    <h2>Layout</h2>
-    <p class="intro">Three widths, no more.</p>
-    <div class="table-scroll">
-      <table class="spec">
-        <thead><tr><th>Class</th><th>Width</th><th>For</th></tr></thead>
-        <tbody>
-          <tr><td><span class="mono">.wrap</span></td><td>720px</td><td>Body copy. The default. Lands near 68 characters at 17px.</td></tr>
-          <tr><td><span class="mono">.wrap--content</span></td><td>1080px</td><td>Card grids, section headers, quote pairs, the footer.</td></tr>
-          <tr><td><span class="mono">.wrap--wide</span></td><td>1200px</td><td>The navigation bar only.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="body-s" style="margin-top:var(--sp-5)">Gutters are 28px, dropping to 20px below 640px. Breakpoints are set in rem and chosen where the content actually breaks, not at device widths: 52rem for the navigation, 46rem for three-column grids, 40rem for the movement journey, 34rem for two-column grids.</p>
   </div>
 </section>
 
 <!-- ===================== COMPONENTS ===================== -->
-<section class="sg-section" id="components">
+<section class="sg-sec" id="components">
   <div class="wrap wrap--content">
-    <h2>Components</h2>
-    <p class="intro">The parts this site is assembled from. If a new page needs something that is not here, it gets added here first, then used.</p>
+    <h2 class="display-m">Components</h2>
+    <p class="intro">The parts the site is assembled from. If a new page needs something that is not here, it is added here first, then used.</p>
 
-    <h3 class="sg-sub">Buttons</h3>
+    <h3 class="sg-sub">Buttons and links</h3>
     <div class="demo">
       <div class="demo-row">
         <a class="btn" href="#components">Primary</a>
-        <a class="btn btn--outline" href="#components">Outline</a>
-        <a class="btn btn--sm" href="#components">Small</a>
+        <a class="btn btn--ghost" href="#components">Ghost</a>
+        <a class="link-more" href="#components">Read more</a>
+        <a class="link-inline" href="#components">An inline link</a>
       </div>
     </div>
-    <div class="demo demo--night">
-      <div class="demo-row">
-        <a class="btn btn--night" href="#components">On night</a>
-        <a class="link-dark" href="#components">Inline link on night</a>
-      </div>
-    </div>
-    <p class="body-s" style="margin-top:var(--sp-4)">13px Montserrat 600, uppercase, 0.06em tracking, 2px radius. Primary fills with Clay Deep and darkens to Ink on hover, lifting one pixel.</p>
 
     <h3 class="sg-sub">Section header</h3>
-    <div class="demo demo--deep">
-      <div class="section-head" style="margin-bottom:0">
+    <div class="demo demo--alt">
+      <div class="section-head section-head--center" style="margin-bottom:0">
         <p class="eyebrow">In their own words</p>
+        <span class="spectrum-rule"></span>
         <h2 class="display-l">Getting Real</h2>
         <p>About their C.Lab experience.</p>
       </div>
     </div>
-    <p class="body-s" style="margin-top:var(--sp-4)">Eyebrow, heading, standfirst. Every section opens this way. Spacing between the three is fixed by the component, which is what prevents ad hoc gaps.</p>
+    <p class="body-s" style="margin-top:var(--sp-4);color:var(--text-muted)">Eyebrow, spectrum rule, heading, standfirst. Every section opens this way, which is what stops sections inventing their own spacing.</p>
 
-    <h3 class="sg-sub">Cards</h3>
-    <div class="demo demo--deep">
-      <div class="grid grid--3">
-        <div class="card card--offering"><div class="name">C.Lab Retreats</div></div>
-        <div class="card card--offering"><div class="name">C.Lab Business</div></div>
-        <div class="card card--offering"><div class="name">C.Lab Local</div></div>
+    <h3 class="sg-sub">Offering rows</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">An index rather than a grid of boxes. Calmer, scales to any number of items, and reads as a list of paths rather than a set of products.</p>
+    <div class="demo demo--alt">
+      <div class="offer-list">
+        <a class="offer" href="#components"><span class="offer-n">01</span><span class="offer-name">C.Lab Retreats</span><span class="offer-go">Explore</span></a>
+        <a class="offer" href="#components"><span class="offer-n">02</span><span class="offer-name">C.Lab Business</span><span class="offer-go">Explore</span></a>
       </div>
     </div>
 
-    <h3 class="sg-sub">Tabs</h3>
-    <div class="demo demo--deep">
-      <div class="tabs" style="margin-bottom:0">
-        <button class="tab" role="tab" aria-selected="true">All</button>
-        <button class="tab" role="tab" aria-selected="false">C.Lab</button>
-        <button class="tab" role="tab" aria-selected="false">C.Lab + Legal Psychedelics</button>
-      </div>
-    </div>
-
-    <h3 class="sg-sub">Quote pair</h3>
+    <h3 class="sg-sub">Quotes</h3>
     <div class="demo">
       <div class="quote-pair">
-        <div class="quote-item">
+        <div>
           <p class="eyebrow">Ancient Wisdom</p>
           <blockquote>&ldquo;We are here to awaken from the illusion of our separateness.&rdquo;</blockquote>
           <cite>Thich Nhat Hanh</cite>
         </div>
-        <div class="quote-rule"></div>
-        <div class="quote-item">
+        <div>
           <p class="eyebrow">Modern Science</p>
           <blockquote>&ldquo;We cannot solve problems from the same level of consciousness that created them.&rdquo;</blockquote>
           <cite>Attributed to Einstein</cite>
@@ -671,16 +452,26 @@
       </div>
     </div>
 
-    <h3 class="sg-sub">Stats</h3>
-    <div class="demo demo--deep">
-      <div class="stats" style="margin-top:0">
-        <div class="stat"><div class="stat-number">98%</div><div class="stat-label">rated experience 5 stars</div></div>
-        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">would recommend C.Lab to others</div></div>
+    <h3 class="sg-sub">Statistics</h3>
+    <div class="demo demo--alt">
+      <div class="stats">
+        <div class="stat"><div class="stat-n">98%</div><div class="stat-l">rated experience 5 stars</div></div>
+        <div class="stat"><div class="stat-n">100%</div><div class="stat-l">would recommend C.Lab to others</div></div>
+      </div>
+    </div>
+
+    <h3 class="sg-sub">Media placeholder</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">Where real photography and video are still to come. Designed to read as intentional, and to swap for a real asset with no layout change.</p>
+    <div class="demo demo--alt">
+      <div class="grid grid--3">
+        <div class="media media--portrait"><span class="media-note">Alumni story</span></div>
+        <div class="media media--portrait"><span class="media-note">Alumni story</span></div>
+        <div class="media media--portrait"><span class="media-note">Alumni story</span></div>
       </div>
     </div>
 
     <h3 class="sg-sub">Email capture</h3>
-    <div class="demo demo--deep">
+    <div class="demo demo--alt">
       <form class="join-form" style="margin-top:0" onsubmit="return false;">
         <input type="email" placeholder="Your email" aria-label="Email address">
         <button type="submit" class="btn">Join</button>
@@ -688,92 +479,90 @@
       <p class="form-note" style="text-align:center">No spam. Unsubscribe anytime.</p>
     </div>
 
-    <h3 class="sg-sub">Media placeholder</h3>
-    <p class="body-s" style="margin-top:var(--sp-5)">Used where real photography and video are still to come. Designed to read as intentional rather than broken, and to be swapped for a real asset without any layout change.</p>
-    <div class="demo demo--deep">
-      <div class="grid grid--3">
-        <div class="media media--portrait" style="background:linear-gradient(160deg,#DED2BC,#C9B896)">
-          <div class="media-note">Alumni story</div>
-        </div>
-        <div class="media media--portrait" style="background:linear-gradient(160deg,#D9CDB6,#C3B08D)">
-          <div class="media-note">Alumni story</div>
-        </div>
-        <div class="media media--portrait" style="background:linear-gradient(160deg,#E2D7C3,#CBBA9B)">
-          <div class="media-note">Alumni story</div>
-        </div>
-      </div>
-    </div>
+    <h3 class="sg-sub">The five movements module</h3>
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">The homepage centrepiece. The section runs several screens tall, the stage sticks, and scroll position drives which movement is active. The mandala is the map: the logo sits at the centre and the five movements arrange around it, joined by a spoke to whichever is active. The rail on the left doubles as a scroll-progress indicator and as navigation. Nodes and rail items are keyboard reachable, and below 56rem the whole thing collapses to a plain stacked list with no scroll hijacking.</p>
+    <div class="sg-note">See it working on <a class="link-inline" href="index.html#movements">the homepage</a>.</div>
   </div>
 </section>
 
 <!-- ===================== MOTION ===================== -->
-<section class="sg-section" id="motion">
+<section class="sg-sec" id="motion">
   <div class="wrap wrap--content">
-    <h2>Motion</h2>
-    <p class="intro">Slow and organic. Nothing here should feel snappy. The subject is a long-arc practice and the motion agrees with it.</p>
-    <div class="table-scroll">
+    <h2 class="display-m">Motion</h2>
+    <p class="intro">Slow and organic. Nothing should feel snappy: the subject is a long-arc practice and the motion agrees with it. One easing curve across the whole site.</p>
+    <div class="scroll-x">
       <table class="spec">
         <thead><tr><th>Token</th><th>Duration</th><th>Used for</th></tr></thead>
         <tbody>
-          <tr><td><span class="mono">--dur-fast</span></td><td>160ms</td><td>Colour changes on hover.</td></tr>
-          <tr><td><span class="mono">--dur</span></td><td>240ms</td><td>The default. Buttons, links, cards, the nav panel.</td></tr>
-          <tr><td><span class="mono">--dur-slow</span></td><td>600ms</td><td>Larger state changes.</td></tr>
-          <tr><td><span class="mono">--dur-reveal</span></td><td>900ms</td><td>Sections easing in on scroll.</td></tr>
-          <tr><td><span class="mono">--ease</span></td><td>cubic-bezier(0.22, 0.61, 0.36, 1)</td><td>Everything. One curve across the site.</td></tr>
+          <tr><td><span class="mono">--dur-fast</span></td><td>180ms</td><td>Colour on hover.</td></tr>
+          <tr><td><span class="mono">--dur</span></td><td>320ms</td><td>The default.</td></tr>
+          <tr><td><span class="mono">--dur-slow</span></td><td>700ms</td><td>The movement detail easing in.</td></tr>
+          <tr><td><span class="mono">--dur-reveal</span></td><td>1000ms</td><td>Sections easing in on scroll.</td></tr>
+          <tr><td><span class="mono">--ease</span></td><td>cubic-bezier(0.22, 1, 0.36, 1)</td><td>Everything.</td></tr>
+          <tr><td>Mandala turn</td><td>90s and 120s per revolution</td><td>Slow enough to be felt rather than seen.</td></tr>
         </tbody>
       </table>
     </div>
     <div class="sg-note">
-      <strong>Reduced motion is honoured everywhere.</strong> Under <span class="mono">prefers-reduced-motion: reduce</span> all transitions collapse to nothing, smooth scrolling is turned off, and revealed sections start visible. Motion is never the only way something is communicated.
+      <strong>Reduced motion is honoured everywhere.</strong> Under <span class="mono">prefers-reduced-motion: reduce</span> all transitions collapse, the mandala stops turning, smooth scrolling is off, revealed sections start visible, and the movements module drops its scroll tie and becomes a plain list.
     </div>
   </div>
 </section>
 
 <!-- ===================== ACCESSIBILITY ===================== -->
-<section class="sg-section" id="access">
+<section class="sg-sec" id="access">
   <div class="wrap wrap--content">
-    <h2>Accessibility</h2>
-    <p class="intro">The standard this site holds, so it stays true as pages are added.</p>
-    <div class="table-scroll">
+    <h2 class="display-m">Accessibility</h2>
+    <div class="scroll-x">
       <table class="spec">
         <thead><tr><th>Rule</th><th>How it is held</th></tr></thead>
         <tbody>
-          <tr><td>Text contrast</td><td>WCAG AA or better, everywhere. Every colour pair in these guidelines is measured and published above.</td></tr>
-          <tr><td>Focus</td><td>One visible focus ring, Clay Deep on light and Clay Soft on dark, never removed. First tab stop on every page is a skip link.</td></tr>
-          <tr><td>Colour alone</td><td>Never the only carrier of meaning. Movement dots are labelled; tab state is set with <span class="mono">aria-selected</span>, not only with fill.</td></tr>
+          <tr><td>Text contrast</td><td>WCAG AA or better in both light and dark. Every pair is measured and published above.</td></tr>
+          <tr><td>Focus</td><td>One visible ring in the accent colour, never removed. A skip link is the first tab stop on every page.</td></tr>
+          <tr><td>Colour alone</td><td>Never the only carrier of meaning. The active movement is marked by size, position, the spoke, the ghosted numeral and the rail bar, not only by hue.</td></tr>
+          <tr><td>The movements module</td><td>Nodes and rail items are buttons with <span class="mono">role="tab"</span>, reachable by keyboard, arrow-navigable, and the detail panel is a live region.</td></tr>
+          <tr><td>Scroll hijacking</td><td>None. The module is driven by ordinary scroll position and can be skipped past at any speed.</td></tr>
           <tr><td>Headings</td><td>One h1 per page, no levels skipped.</td></tr>
-          <tr><td>Images</td><td>Meaningful images take alt text. Decorative marks take <span class="mono">alt=""</span>.</td></tr>
-          <tr><td>Motion</td><td>All of it optional, see above.</td></tr>
-          <tr><td>Targets</td><td>Interactive elements are at least 44px tall in their tap area.</td></tr>
+          <tr><td>Images</td><td>Meaningful images take alt text. The mandala is decorative and takes <span class="mono">alt=""</span>.</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ===================== USING ===================== -->
-<section class="sg-section" id="using" style="border-bottom:0">
+<!-- ===================== PERFORMANCE ===================== -->
+<section class="sg-sec" id="perf">
   <div class="wrap wrap--content">
-    <h2>Using this</h2>
-    <p class="intro">These guidelines are not a picture of the design system. They are the design system, rendered.</p>
+    <h2 class="display-m">Performance</h2>
+    <p class="intro">One rule here, and it is not obvious, so it is written down.</p>
+    <div class="sg-note">
+      <strong>The mandala is always an <span class="mono">&lt;img&gt;</span>, never an inline <span class="mono">&lt;svg&gt;&lt;use&gt;</span>.</strong>
+      The artwork is 76 paths. Inlined and placed inside the sticky movements module, Chrome re-rasterises the whole thing on every scroll frame instead of caching it, which is enough to stop the page responding altogether. As an <span class="mono">&lt;img&gt;</span> it is decoded once and cached, and scrolling stays smooth. The cost is carrying two files so the lattice can invert with the theme, which is a good trade.
+    </div>
+    <p class="body-s" style="margin-top:var(--sp-6);color:var(--text-muted)">Two smaller consequences of the same principle: the rotating marks carry <span class="mono">will-change: transform</span> so the turn stays on the compositor, and the active movement node uses a second circle for its halo rather than an SVG <span class="mono">drop-shadow</span> filter, because that element changes on every scroll tick and filters are re-evaluated each time.</p>
+  </div>
+</section>
 
-    <div class="table-scroll">
+<!-- ===================== USING ===================== -->
+<section class="sg-sec" id="using" style="border-bottom:0">
+  <div class="wrap wrap--content">
+    <h2 class="display-m">Using this</h2>
+    <p class="intro">These guidelines are not a picture of the design system. They are the design system, rendered.</p>
+    <div class="scroll-x">
       <table class="spec">
         <thead><tr><th>File</th><th>What it holds</th></tr></thead>
         <tbody>
-          <tr><td><span class="mono">system/tokens.css</span></td><td>Every colour, size, space, radius and duration on the site. The only file with raw values in it.</td></tr>
+          <tr><td><span class="mono">system/tokens.css</span></td><td>Every colour, size, space and duration, in both themes. The only file with raw values.</td></tr>
           <tr><td><span class="mono">system/base.css</span></td><td>Elements and components, built entirely from tokens.</td></tr>
-          <tr><td><span class="mono">assets/js/site.js</span></td><td>Three behaviours: mobile navigation, the offerings filter, the scroll reveal.</td></tr>
-          <tr><td><span class="mono">assets/img/</span></td><td>Logo variants.</td></tr>
+          <tr><td><span class="mono">assets/js/site.js</span></td><td>Theme switch, navigation, the five movements, the scroll reveal.</td></tr>
+          <tr><td><span class="mono">assets/img/</span></td><td>The two logo files and the science illustrations.</td></tr>
         </tbody>
       </table>
     </div>
-
     <h3 class="sg-sub">Adding a page</h3>
-    <p class="body-s" style="margin-top:var(--sp-5)">Link the two stylesheets, copy the navigation and footer from an existing page, and build the body from the components above. A new page should not need a single new colour or spacing value. If it does, that value belongs in <span class="mono">tokens.css</span> and in these guidelines before it is used.</p>
-
+    <p class="body-s" style="margin-top:var(--sp-5);color:var(--text-muted)">Link the two stylesheets, copy the theme script, navigation and footer from an existing page, and build the body from the components above. A new page should not need a single new colour or spacing value, and should not need any dark-mode work at all. If it does need a new value, that value belongs in <span class="mono">tokens.css</span> and in these guidelines before it is used.</p>
     <div class="sg-note">
-      <strong>Still to come in Level 1.</strong> The minimalist logo variant for small sizes, the science and transformation graphic assets, and real photography throughout. Each will be documented here as it lands.
+      <strong>Still to come in Level 1.</strong> The minimalist logo variant for small sizes, the transformation motif, and real photography throughout. Each will be documented here as it lands.
     </div>
   </div>
 </section>
@@ -781,12 +570,11 @@
 </main>
 
 <footer class="site-footer">
-  <div class="wrap wrap--content">
-    <div class="footer-bottom" style="margin-top:0;border-top:0">
-      C.Lab Brand Guidelines, Level 1, version 1.0. Prepared by Iris Cocreative.
-    </div>
+  <div class="footer-bottom" style="margin-top:0;border-top:0">
+    C.Lab Brand Guidelines &middot; Level 1 &middot; Version 2.0 &middot; Prepared by Iris Cocreative
   </div>
 </footer>
 
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>

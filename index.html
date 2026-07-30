@@ -3,96 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C.Lab — For the Love of Life</title>
+<title>C.Lab &mdash; For the Love of Life</title>
 <meta name="description" content="C.Lab is a reality-tested path to greater connection and aliveness. Rooted in ancient wisdom and modern science, we help you live a more fulfilling life and contribute your gifts to a more loving world.">
-<link rel="canonical" href="https://clab.iriscocreative.com/">
 
+<link rel="canonical" href="https://clab.iriscocreative.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="C.Lab">
-<meta property="og:title" content="C.Lab — For the Love of Life">
-<meta property="og:description" content="A reality-tested path to greater connection and aliveness, for a more fulfilling life and a more loving world.">
-<meta property="og:url" content="https://clab.iriscocreative.com/">
+<meta property="og:title" content="C.Lab &mdash; For the Love of Life">
+<meta property="og:description" content="C.Lab is a reality-tested path to greater connection and aliveness. Rooted in ancient wisdom and modern science, we help you live a more fulfilling life and contribute your gifts to a more loving world.">
 <meta name="twitter:card" content="summary_large_image">
-
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('clab-theme');
+    if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/img/clab-mandala-on-light.svg" type="image/svg+xml">
 <link rel="stylesheet" href="system/tokens.css">
 <link rel="stylesheet" href="system/base.css">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NGO",
-  "name": "C.Lab",
-  "url": "https://clab.iriscocreative.com/",
-  "slogan": "For the Love of Life",
-  "description": "C.Lab is a nonprofit catalyzing connection, creativity and contribution, for more fulfilling lives and a more loving world, so our children and all life can thrive."
-}
-</script>
 </head>
 <body>
-
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ============================= NAV ============================= -->
-<nav class="site-nav" aria-label="Main">
-  <div class="wrap wrap--wide nav-wrap">
-    <a href="#top" class="nav-brand">
-      <img src="assets/img/clab-mandala-on-light.svg" alt="">
-      <span class="nav-wordmark">C.LAB</span>
-    </a>
-    <div class="nav-links">
+<nav class="site-nav" id="nav" aria-label="Main">
+  <a href="index.html" class="nav-brand">
+    <span class="logo"><img class="is-light" src="assets/img/clab-mandala-on-light.svg" alt="" width="30" height="30"><img class="is-dark" src="assets/img/clab-mandala-on-dark.svg" alt="" width="30" height="30"></span>
+    <span class="nav-wordmark">C.LAB</span>
+  </a>
+  <div class="nav-links" id="navLinks">
       <a href="about.html">About</a>
       <a href="offerings.html">Offerings</a>
       <a href="resources.html">Resources</a>
       <a href="contribute.html">Contribute</a>
-    </div>
-    <div class="nav-actions">
-      <a href="#stay-connected" class="btn btn--sm">Get Started</a>
-      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-panel">Menu</button>
-    </div>
   </div>
-  <div class="nav-panel" id="nav-panel" data-nav-panel data-open="false">
-    <div class="wrap wrap--wide nav-panel-inner">
-      <a href="about.html">About</a>
-      <a href="offerings.html">Offerings</a>
-      <a href="resources.html">Resources</a>
-      <a href="contribute.html">Contribute</a>
-      <a href="#stay-connected" class="btn btn--sm">Get Started</a>
-    </div>
+  <div class="nav-actions">
+    <a href="index.html#stay-connected" class="nav-cta">Get Started</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"><svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <main id="main">
 
-<!-- ============================= HERO ============================= -->
+<!-- ============================ HERO ============================ -->
 <section class="hero" id="top">
-  <div class="wrap">
-    <img class="hero-mark" src="assets/img/clab-mandala-on-light.svg" alt="">
-    <h1 class="display-xl">For the Love of Life</h1>
-    <p class="hero-body">C.Lab is a reality&#8209;tested path to greater connection and aliveness. Rooted in ancient wisdom and modern science, we help you live a more fulfilling life and contribute your gifts to a more loving world, so our children and all life can thrive.</p>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1 class="display-xl">For the Love of <span class="em">Life</span></h1>
+      <p class="hero-body">C.Lab is a reality&#8209;tested path to greater connection and aliveness. Rooted in ancient wisdom and modern science, we help you live a more fulfilling life and contribute your gifts to a more loving world, so our children and all life can thrive.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#movements">Begin</a>
+        <a class="link-more" href="offerings.html">See the offerings</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="orb"><span class="logo"><img class="is-light" src="assets/img/clab-mandala-on-light.svg" alt="" width="400" height="400"><img class="is-dark" src="assets/img/clab-mandala-on-dark.svg" alt="" width="400" height="400"></span></div>
+    </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- ====================== SCIENCE OF CONNECTION ====================== -->
-<section class="surface--deep" id="science">
-  <div class="wrap">
-    <div class="thesis reveal">
-      <span>Disconnection is the root cause.</span>
-      <span class="remedy">Connection is the remedy.</span>
+<!-- ========================= THE SCIENCE ========================= -->
+<section class="surface--alt surface--line" id="science">
+  <div class="wrap wrap--content">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">The science of connection</p>
+      <span class="spectrum-rule"></span>
+      <h2 class="display-l">Disconnection is the root cause.<br><span class="em">Connection is the remedy.</span></h2>
     </div>
 
-    <div class="prose-center reveal">
-      <p>Here&rsquo;s what the research shows:</p>
+    <div class="prose reveal" style="text-align:center">
       <p>The Watts Connectedness Study confirms the more disconnected we feel, the more we suffer. The more connected we feel to ourselves, others and the living world, the more we thrive. <a class="link-inline" href="about.html#science">See the science</a></p>
       <p>Now, FMRI scans let us see what is happening in the brain.</p>
     </div>
 
-    <div class="grid grid--2 reveal" style="margin-top:var(--sp-8)">
+    <div class="grid grid--2 reveal" style="margin-top:var(--sp-9);max-width:var(--max-prose);margin-inline:auto">
       <div class="card">
         <img class="media" src="assets/img/science-disconnected.svg" alt="An interpretive network diagram: one small cluster of nodes densely and repetitively linked, while the rest of the ring stays quiet and unconnected." width="200" height="200" style="margin-bottom:var(--sp-5)">
         <div class="card-title">Disconnected</div>
@@ -105,39 +100,38 @@
       </div>
     </div>
 
-    <p class="fine-print" style="margin-top:var(--sp-5)">Interpretive illustration inspired by fMRI research, Imperial College London.</p>
+    <p class="fine-print reveal" style="text-align:center;margin-top:var(--sp-6)">Interpretive illustration inspired by fMRI research, Imperial College London.</p>
 
-    <div class="reveal" style="text-align:center;margin-top:var(--sp-8)">
-      <p class="lede" style="margin-bottom:var(--sp-5)">How connected are you?</p>
+    <div class="reveal" style="text-align:center;margin-top:var(--sp-9)">
+      <p class="lede" style="margin-bottom:var(--sp-6)">How connected are you?</p>
       <a class="btn" href="#stay-connected">Take the Connectedness Quiz</a>
-      <p class="form-note">Opening soon. Join the list below and we will let you know first.</p>
+      <p class="form-note">Opening soon. Join the list and we will let you know first.</p>
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- ============================= WHY C.LAB ============================= -->
+<!-- =========================== WHY C.LAB =========================== -->
 <section id="why">
   <div class="wrap reveal">
-    <p class="lede">The modern world disconnects us not only from ourselves, but from each other and the living world.</p>
-    <p class="body-l">This disconnection limits our human potential. It is the source of our discontent, and the wider suffering we see in the world around us.</p>
-    <p class="body-l">Conventional therapy, coaching and spirituality tend to focus on the individual. This can be helpful but is incomplete.</p>
-    <p class="body-l">C.Lab offers a more complete path to a fulfilling life and loving world. We call it the 5 Movements.</p>
+    <p class="statement">The modern world disconnects us not only from ourselves, but from each other and the living world.</p>
+    <div style="margin-top:var(--sp-8);color:var(--text-muted)">
+      <p>This disconnection limits our human potential. It is the source of our discontent, and the wider suffering we see in the world around us.</p>
+      <p>Conventional therapy, coaching and spirituality tend to focus on the individual. This can be helpful but is incomplete.</p>
+      <p>C.Lab offers a more complete path to a fulfilling life and loving world. We call it the 5 Movements.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============================= QUOTES ============================= -->
-<section class="surface--deep section--tight" id="wisdom">
+<!-- ============================ QUOTES ============================ -->
+<section class="section--tight" id="wisdom">
   <div class="wrap wrap--content reveal">
     <div class="quote-pair">
-      <div class="quote-item">
+      <div>
         <p class="eyebrow">Ancient Wisdom</p>
         <blockquote>&ldquo;We are here to awaken from the illusion of our separateness.&rdquo;</blockquote>
         <cite>Thich Nhat Hanh, Nobel Peace Prize nominee</cite>
       </div>
-      <div class="quote-rule"></div>
-      <div class="quote-item">
+      <div>
         <p class="eyebrow">Modern Science</p>
         <blockquote>&ldquo;We cannot solve problems from the same level of consciousness that created them.&rdquo;</blockquote>
         <cite>Attributed to Einstein</cite>
@@ -146,107 +140,122 @@
   </div>
 </section>
 
-<!-- ============================= 5 MOVEMENTS ============================= -->
-<section class="surface--night on-night" id="movements">
-  <div class="wrap wrap--content">
-    <img class="movements-mark reveal" src="assets/img/clab-mandala-on-dark.svg" alt="">
-    <div class="section-head reveal" style="margin-bottom:0">
+<!-- ======================= THE FIVE MOVEMENTS ======================= -->
+<section class="movements" id="movements">
+  <div class="movements-head reveal">
+    <div class="section-head section-head--center" style="margin-bottom:0">
       <p class="eyebrow">A living map</p>
-      <h2 class="display-l">C.Lab&rsquo;s 5 Movements of Transformation</h2>
+      <span class="spectrum-rule"></span>
+      <h2 class="display-l">The 5 Movements of <span class="em">Transformation</span></h2>
       <p>A journey from Cosmos thru Conditioning to Connection, Creativity and Contribution. Relational and embodied. With every movement we feel more connected and alive.</p>
     </div>
+  </div>
 
-    <div class="journey reveal">
-      <div class="move" data-mv="cosmos"><div class="dot"></div><span class="name">Cosmos</span></div>
-      <div class="move" data-mv="conditioning"><div class="dot"></div><span class="name">Conditioning</span></div>
-      <div class="move" data-mv="connection"><div class="dot"></div><span class="name">Connection</span></div>
-      <div class="move" data-mv="creativity"><div class="dot"></div><span class="name">Creativity</span></div>
-      <div class="move" data-mv="contribution"><div class="dot"></div><span class="name">Contribution</span></div>
-    </div>
+  <div class="mv-scroll" id="mvScroll">
+    <div class="mv-sticky">
+      <div class="wrap wrap--wide">
+        <div class="mv-layout">
+          <div>
+            <div class="mv-nav" id="mvNav" role="tablist" aria-label="The five movements"></div>
+            <p class="mv-hint" aria-hidden="true">
+              <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 1v13M1.5 10.5 5 14l3.5-3.5"/></svg>
+              Scroll to explore
+            </p>
+          </div>
 
-    <div class="movements-foot reveal">
-      <a class="link-dark" href="about.html#movements">Learn the art &amp; science behind the 5 Movements</a>
-      <div class="business">
-        <p>Are you a leader, CEO, exec, entrepreneur?</p>
-        <a class="link-dark" href="offerings.html#business">Learn more about C.Lab for Business &rarr;</a>
+          <div class="mv-stage">
+            <div class="mandala-wrap">
+              <div class="mandala-core" id="mandalaCore" aria-hidden="true"><span class="logo"><img class="is-light" src="assets/img/clab-mandala-on-light.svg" alt="" width="400" height="400"><img class="is-dark" src="assets/img/clab-mandala-on-dark.svg" alt="" width="400" height="400"></span></div>
+              <svg id="mandalaSvg" viewBox="0 0 400 400" role="group" aria-label="The five movements arranged around the C.Lab mandala">
+                <g id="spokes"></g>
+                <g id="spiralNodes"></g>
+              </svg>
+            </div>
+
+            <div class="mv-detail is-in" id="mvDetail" aria-live="polite">
+              <div class="num-ghost" id="mvGhost" aria-hidden="true">I</div>
+              <div class="mv-detail-inner">
+                <p class="eyebrow" id="mvEyebrow">Movement 1</p>
+                <h3 id="mvName">Cosmos</h3>
+                <p class="tag" id="mvTag"></p>
+                <p class="body" id="mvBody"></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="movements-foot reveal">
+    <a class="link-more" href="about.html#movements">Learn the art &amp; science behind the 5 Movements</a>
+    <p class="ask">Are you a leader, CEO, exec, entrepreneur?</p>
+    <a class="link-more" href="offerings.html#business">Learn more about C.Lab for Business</a>
+  </div>
 </section>
 
-<!-- ============================= TESTIMONIALS ============================= -->
-<section class="surface--deep" id="testimonials">
+<!-- ========================= TESTIMONIALS ========================= -->
+<section class="surface--alt surface--line" id="testimonials">
   <div class="wrap wrap--content">
-    <div class="section-head reveal">
+    <div class="section-head section-head--center reveal">
       <p class="eyebrow">In their own words</p>
+      <span class="spectrum-rule"></span>
       <h2 class="display-l">Getting Real</h2>
       <p>About their C.Lab experience.</p>
     </div>
 
     <div class="grid grid--3 reveal">
-      <div class="media media--portrait" style="background:linear-gradient(160deg,#DED2BC,#C9B896)">
-        <div class="media-note">Alumni story</div>
-      </div>
-      <div class="media media--portrait" style="background:linear-gradient(160deg,#D9CDB6,#C3B08D)">
-        <div class="media-note">Alumni story</div>
-      </div>
-      <div class="media media--portrait" style="background:linear-gradient(160deg,#E2D7C3,#CBBA9B)">
-        <div class="media-note">Alumni story</div>
-      </div>
+      <div class="media media--portrait"><span class="media-note">Alumni story</span></div>
+      <div class="media media--portrait"><span class="media-note">Alumni story</span></div>
+      <div class="media media--portrait"><span class="media-note">Alumni story</span></div>
     </div>
 
-    <div class="stats reveal">
-      <div class="stat">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">rated experience 5 stars</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">would recommend C.Lab to others</div>
-      </div>
+    <div class="stats reveal" style="margin-top:var(--sp-9)">
+      <div class="stat"><div class="stat-n">98%</div><div class="stat-l">rated experience 5 stars</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">would recommend C.Lab to others</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============================= COMMUNITY ============================= -->
+<!-- ========================== COMMUNITY ========================== -->
 <section id="community">
   <div class="wrap wrap--content reveal" style="text-align:center">
-    <p class="eyebrow eyebrow--sage">C.Lab Is</p>
-    <h2 class="display-l" style="max-width:38rem;margin:var(--sp-3) auto 0">A Growing International Community</h2>
-    <p class="body-l" style="max-width:37rem;margin:var(--sp-6) auto 0">of families and businesses, leaders and philanthropists, healers and builders, innovators and changemakers living more fulfilling lives and contributing to a more loving world so our children and all life can thrive.</p>
-    <p style="margin-top:var(--sp-7)">
-      <a class="link-inline" href="contribute.html">Explore the community</a>
-      <span style="color:var(--line-strong);margin-inline:var(--sp-4)">|</span>
-      <a class="link-inline" href="resources.html">Stories of a more loving world</a>
+    <p class="eyebrow" style="margin-bottom:var(--sp-5)">C.Lab is</p>
+    <h2 class="display-l" style="max-width:16ch;margin-inline:auto">A Growing International <span class="em">Community</span></h2>
+    <p style="max-width:52ch;margin:var(--sp-7) auto 0;color:var(--text-muted)">of families and businesses, leaders and philanthropists, healers and builders, innovators and changemakers living more fulfilling lives and contributing to a more loving world so our children and all life can thrive.</p>
+    <p style="margin-top:var(--sp-8);display:flex;gap:var(--sp-7);justify-content:center;flex-wrap:wrap">
+      <a class="link-more" href="contribute.html">Explore the community</a>
+      <a class="link-more" href="resources.html">Stories of a more loving world</a>
     </p>
   </div>
 </section>
 
-<!-- ============================= OFFERINGS ============================= -->
-<section class="surface--deep" id="offerings">
+<!-- ========================== OFFERINGS ========================== -->
+<section class="surface--alt surface--line" id="offerings">
   <div class="wrap wrap--content">
-    <div class="section-head reveal">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Offerings</p>
+      <span class="spectrum-rule"></span>
       <h2 class="display-l">Your path to a more fulfilling life and loving world.</h2>
-      <p class="lede">Run the experiment. See for yourself.</p>
+      <p class="lede" style="margin-top:var(--sp-5)">Run the experiment. See for yourself.</p>
     </div>
 
-    <div class="grid grid--3 reveal">
-      <a class="card card--offering" href="offerings.html#retreats"><span class="name">C.Lab Retreats</span></a>
-      <a class="card card--offering" href="offerings.html#business"><span class="name">C.Lab Business</span></a>
-      <a class="card card--offering" href="offerings.html#local"><span class="name">C.Lab Local</span></a>
-      <a class="card card--offering" href="offerings.html#private"><span class="name">C.Lab Private</span></a>
-      <a class="card card--offering" href="offerings.html#apprentice"><span class="name">C.Lab Apprentice</span></a>
-      <a class="card card--offering" href="offerings.html#facilitator"><span class="name">C.Lab Facilitator Training</span></a>
+    <div class="offer-list reveal">
+      <a class="offer" href="offerings.html#retreats"><span class="offer-n">01</span><span class="offer-name">C.Lab Retreats</span><span class="offer-go">Explore</span></a>
+      <a class="offer" href="offerings.html#business"><span class="offer-n">02</span><span class="offer-name">C.Lab Business</span><span class="offer-go">Explore</span></a>
+      <a class="offer" href="offerings.html#local"><span class="offer-n">03</span><span class="offer-name">C.Lab Local</span><span class="offer-go">Explore</span></a>
+      <a class="offer" href="offerings.html#private"><span class="offer-n">04</span><span class="offer-name">C.Lab Private</span><span class="offer-go">Explore</span></a>
+      <a class="offer" href="offerings.html#apprentice"><span class="offer-n">05</span><span class="offer-name">C.Lab Apprentice</span><span class="offer-go">Explore</span></a>
+      <a class="offer" href="offerings.html#facilitator"><span class="offer-n">06</span><span class="offer-name">C.Lab Facilitator Training</span><span class="offer-go">Explore</span></a>
     </div>
   </div>
 </section>
 
-<!-- ============================= STAY CONNECTED ============================= -->
-<section id="stay-connected">
+<section id="stay-connected" class="surface--line">
   <div class="wrap wrap--content reveal" style="text-align:center">
-    <p class="eyebrow eyebrow--sage">Stay Connected</p>
-    <h2 class="display-l" style="margin-top:var(--sp-3)">Join the C.Lab community</h2>
-    <p style="max-width:33rem;margin:var(--sp-5) auto 0">Receive occasional updates on retreats, gatherings, resources, and reflections on living more fulfilling lives and contributing to a more loving world.</p>
+    <p class="eyebrow" style="margin-bottom:var(--sp-5)">Stay Connected</p>
+    <h2 class="display-l">Join the C.Lab community</h2>
+    <p style="max-width:38ch;margin:var(--sp-6) auto 0;color:var(--text-muted)">Receive occasional updates on retreats, gatherings, resources, and reflections on living more fulfilling lives and contributing to a more loving world.</p>
     <form class="join-form" onsubmit="return false;">
       <input type="email" placeholder="Your email" aria-label="Email address" required>
       <button type="submit" class="btn">Join</button>
@@ -257,48 +266,39 @@
 
 </main>
 
-<!-- ============================= FOOTER ============================= -->
 <footer class="site-footer">
-  <div class="wrap wrap--content">
-    <div class="footer-top">
-      <div>
-        <a href="#top" class="footer-brand-row">
-          <img src="assets/img/clab-mandala-on-dark.svg" alt="">
-          <span class="footer-logo">C.LAB</span>
-        </a>
-        <p class="footer-tagline">For the love of life.</p>
-        <p class="footer-desc">C.Lab is a nonprofit catalyzing connection, creativity and contribution, for more fulfilling lives and a more loving world, so our children and all life can thrive.</p>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-col-title">About</div>
-        <a href="about.html#science">The Science</a>
-        <a href="about.html#movements">Five Movements</a>
-        <a href="about.html#story">Our Story</a>
-        <a href="#testimonials">Testimonials</a>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-col-title">Offerings &amp; Resources</div>
-        <a href="offerings.html">All Offerings</a>
-        <a href="resources.html#writings">Manifesto &amp; Writings</a>
-        <a href="resources.html#media">Poems &amp; Media</a>
-        <a href="resources.html#faq">FAQ</a>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-col-title">Connect</div>
-        <a href="#community">Community</a>
-        <a href="contribute.html">Contribute</a>
-        <a href="contribute.html#contact">Get in touch</a>
-        <a href="#stay-connected">Join the list</a>
-      </div>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-brand-row">
+        <span class="logo"><img class="is-light" src="assets/img/clab-mandala-on-light.svg" alt="" width="28" height="28"><img class="is-dark" src="assets/img/clab-mandala-on-dark.svg" alt="" width="28" height="28"></span>
+        <span class="footer-logo">C.LAB</span>
+      </a>
+      <p class="footer-tagline">For the love of life.</p>
+      <p class="footer-desc">C.Lab is a nonprofit catalyzing connection, creativity and contribution, for more fulfilling lives and a more loving world, so our children and all life can thrive.</p>
     </div>
-
-    <div class="footer-bottom">
-      501(c)(3) nonprofit information, pending.
+    <div class="footer-col">
+      <div class="footer-col-title">About</div>
+      <a href="about.html#science">The Science</a>
+      <a href="about.html#movements">Five Movements</a>
+      <a href="about.html#story">Our Story</a>
+      <a href="index.html#testimonials">Testimonials</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Offerings &amp; Resources</div>
+      <a href="offerings.html">All Offerings</a>
+      <a href="resources.html#writings">Manifesto &amp; Writings</a>
+      <a href="resources.html#media">Poems &amp; Media</a>
+      <a href="resources.html#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Connect</div>
+      <a href="index.html#community">Community</a>
+      <a href="contribute.html">Contribute</a>
+      <a href="contribute.html#contact">Get in touch</a>
+      <a href="index.html#stay-connected">Join the list</a>
     </div>
   </div>
+  <div class="footer-bottom">501(c)(3) nonprofit information, pending.</div>
 </footer>
 
 <script src="assets/js/site.js" defer></script>
