@@ -31,6 +31,9 @@ check any part of it in either mode.
 | `assets/img/` | The two logo files and the science illustrations |
 | `assets/js/site.js` | Theme switch, navigation, the five movements, the scroll reveal |
 | `team-photos/` | Team headshots |
+| `v2/` | **Version 2** — the same design system with the photographic image set. Not linked from v1, marked `noindex`. Live at [/v2/](https://clab.iriscocreative.com/v2/). |
+| `system/v2.css` | The v2 imagery layer: image heroes, textures, image bands, full-bleed figures. |
+| `assets/img/v2/` | The optimised image set (WebP, 1.5MB total from a 38MB source set). |
 | `archive/` | The April 2026 prototype, kept for reference. Not linked, marked `noindex`. |
 
 ## Editing

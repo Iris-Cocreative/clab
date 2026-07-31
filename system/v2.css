@@ -1,0 +1,242 @@
+/* ==========================================================================
+   C.Lab — v2 imagery layer
+   Loaded on top of tokens.css + base.css. Everything here is about putting
+   the photographic and graphic image set to work: full-bleed grounds,
+   textures, and the small marks on the offering rows.
+
+   Rules that hold throughout:
+   - Every image that carries type also carries a scrim, so the type meets
+     its contrast target against the darkest plausible pixel, not the average.
+   - Images are decorative. They are background-image or empty-alt <img>, so
+     a screen reader never has to listen to them.
+   - Nothing below the fold loads eagerly.
+
+   URLs here resolve relative to this stylesheet (system/), so they work at
+   any page depth.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. THE IMAGE HERO
+   The prism plate was made for exactly this: its lower two thirds and centre
+   band are deliberately empty so a headline can sit on them. The hero is
+   always dark, whichever theme is active.
+   -------------------------------------------------------------------------- */
+.hero--image {
+  background-color: #0A0A0A;
+  color: var(--deep-text);
+  min-height: 100svh;
+  isolation: isolate;
+  overflow: hidden;
+}
+.hero--image::before,
+.hero--image::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+}
+.hero--image::before {
+  background-image: url("../assets/img/v2/hero-prism.webp");
+  background-size: cover;
+  background-position: 62% 30%;
+  animation: heroDrift 42s ease-in-out infinite alternate;
+}
+/* The scrim. Weighted to the left, where the type sits. */
+.hero--image::after {
+  background:
+    linear-gradient(100deg, rgba(6,10,14,0.90) 0%, rgba(6,10,14,0.72) 38%, rgba(6,10,14,0.28) 68%, rgba(6,10,14,0.10) 100%),
+    linear-gradient(to bottom, rgba(6,10,14,0.55) 0%, transparent 30%, transparent 62%, rgba(6,10,14,0.45) 100%);
+}
+@keyframes heroDrift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to   { transform: scale(1.08) translate3d(-1.2%, -1%, 0); }
+}
+
+.hero--image h1,
+.hero--image .hero-body { color: var(--deep-text); }
+.hero--image .hero-body { color: var(--deep-soft); }
+.hero--image .hero-grid { grid-template-columns: minmax(0, 1fr); }
+.hero--image .hero-text { max-width: 34rem; }
+.hero--image .hero-mark { width: 74px; margin-bottom: var(--sp-6); }
+.hero--image .btn {
+  background: var(--deep-text); color: #0A0A0A; border-color: var(--deep-text);
+}
+.hero--image .btn:hover { background: transparent; color: var(--deep-text); }
+.hero--image .link-more { color: var(--deep-text); border-bottom-color: rgba(228,218,207,0.35); }
+.hero--image .link-more:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* The navigation sits over the dark hero until the page moves, so it has to
+   invert until then. */
+body.has-dark-hero .site-nav:not(.is-scrolled) {
+  --text: #F2EEE6;
+  --text-muted: rgba(242, 238, 230, 0.76);
+  --border: rgba(242, 238, 230, 0.22);
+  --border-2: rgba(242, 238, 230, 0.34);
+}
+body.has-dark-hero .site-nav:not(.is-scrolled) .nav-wordmark { color: #F2EEE6; }
+body.has-dark-hero .site-nav:not(.is-scrolled) .logo .is-light { display: none; }
+body.has-dark-hero .site-nav:not(.is-scrolled) .logo .is-dark  { display: block; }
+body.has-dark-hero .site-nav:not(.is-scrolled) .nav-toggle span { background: #F2EEE6; }
+
+/* --------------------------------------------------------------------------
+   2. THE SPECTRUM DIVIDER
+   A thin full-bleed strip between two blocks. Used sparingly — twice on the
+   homepage, never on an inner page.
+   -------------------------------------------------------------------------- */
+.divider-band {
+  height: clamp(4.5rem, 9vw, 7.5rem);
+  background-image: url("../assets/img/v2/divider.webp");
+  background-size: cover;
+  background-position: center;
+  background-color: #0A0A0A;
+}
+
+/* --------------------------------------------------------------------------
+   3. PAPER TEXTURE
+   The pattern tile at the weight of a watermark. It repeats seamlessly, so
+   it can sit under body copy without ever competing with it.
+   -------------------------------------------------------------------------- */
+.textured { position: relative; isolation: isolate; }
+.textured::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image: url("../assets/img/v2/pattern-tile.webp");
+  background-size: 420px;
+  background-repeat: repeat;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+:root[data-theme="dark"] .textured::before {
+  opacity: 0.12;
+  mix-blend-mode: screen;
+}
+
+/* --------------------------------------------------------------------------
+   4. IMAGE BANDS
+   A deep band with a photograph behind it, held far enough back that the
+   band's own text tokens still hold their contrast.
+   -------------------------------------------------------------------------- */
+.band--image { isolation: isolate; }
+.band--image::before,
+.band--image::after { content: ""; position: absolute; inset: 0; z-index: -1; }
+.band--image::before {
+  background-size: cover; background-position: center;
+  opacity: var(--img-opacity, 0.5);
+}
+.band--image::after {
+  background: linear-gradient(95deg, rgba(12,18,26,0.92) 0%, rgba(12,18,26,0.72) 46%, rgba(12,18,26,0.42) 100%);
+}
+.band--nebula::before  { background-image: url("../assets/img/v2/nebula.webp"); --img-opacity: 0.85; background-position: 50% 38%; }
+
+/* The movements band carries content right across its width — rail, mandala,
+   detail — so it needs an even scrim rather than the left-weighted one. */
+.movements.band--image::after {
+  background: linear-gradient(to bottom,
+    rgba(10,16,24,0.86) 0%, rgba(10,16,24,0.62) 34%,
+    rgba(10,16,24,0.62) 66%, rgba(10,16,24,0.88) 100%);
+}
+.band--wing::before    { background-image: url("../assets/img/v2/wing.webp");   --img-opacity: 0.40; }
+.band--water::before   { background-image: url("../assets/img/v2/water-rings.webp"); --img-opacity: 0.55; }
+.band--canopy::before  { background-image: url("../assets/img/v2/canopy.webp"); --img-opacity: 0.34; }
+.band--pavilion::before{ background-image: url("../assets/img/v2/pavilion.webp"); --img-opacity: 0.34; }
+.band--dandelion::before {
+  background-image: url("../assets/img/v2/dandelion.webp");
+  --img-opacity: 0.45; background-position: 78% 50%; background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* --------------------------------------------------------------------------
+   5. THE FULL-BLEED FIGURE
+   One photograph, edge to edge, with a single line of type on it. Used once
+   per page at most.
+   -------------------------------------------------------------------------- */
+.figure-band {
+  position: relative; isolation: isolate;
+  min-height: clamp(26rem, 52vw, 40rem);
+  display: flex; align-items: center;
+  background-color: #0A0C10;
+  color: var(--deep-text);
+  border-block: var(--bw) solid var(--deep-line);
+}
+.figure-band::before,
+.figure-band::after { content: ""; position: absolute; inset: 0; z-index: -1; }
+.figure-band::before { background-size: cover; background-position: center; }
+.figure-band::after {
+  background: linear-gradient(to bottom, rgba(8,10,14,0.72) 0%, rgba(8,10,14,0.42) 45%, rgba(8,10,14,0.82) 100%);
+}
+.figure-band--dusk::before      { background-image: url("../assets/img/v2/community-dusk.webp"); }
+.figure-band--threshold::before { background-image: url("../assets/img/v2/threshold.webp"); background-position: 50% 62%; }
+.figure-band h2,
+.figure-band h3 { color: var(--deep-text); }
+.figure-band p  { color: var(--deep-soft); }
+.figure-band .eyebrow { color: var(--deep-faint); }
+.figure-band .link-more { color: var(--deep-text); border-bottom-color: rgba(228,218,207,0.35); }
+.figure-band .link-more:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.figure-band .btn { background: var(--deep-text); color: #0A0C10; border-color: var(--deep-text); }
+.figure-band .btn:hover { background: transparent; color: var(--deep-text); }
+
+/* The form sits on a photograph, so the field needs its own ground and light
+   text — otherwise what a visitor types is invisible in light mode. */
+.figure-band .join-form input {
+  background: rgba(10, 12, 16, 0.55);
+  border-color: rgba(242, 238, 230, 0.34);
+  color: #F2EEE6;
+}
+.figure-band .join-form input::placeholder { color: rgba(242, 238, 230, 0.62); }
+.figure-band .join-form input:focus { border-color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   6. PHOTOGRAPHS IN CONTENT
+   -------------------------------------------------------------------------- */
+.photo {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: var(--bw) solid var(--border);
+  background: var(--bg-2);
+  position: relative;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo--portrait { aspect-ratio: 4 / 5; }
+.photo--wide     { aspect-ratio: 16 / 10; }
+.photo--square   { aspect-ratio: 1; }
+
+/* A caption laid over the foot of an image. Reads on any photograph because
+   it brings its own gradient. */
+.photo-cap {
+  position: absolute; inset-inline: 0; bottom: 0;
+  padding: var(--sp-7) var(--sp-5) var(--sp-4);
+  font-family: var(--font-mono); font-size: var(--fs-micro);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #F2EEE6;
+  background: linear-gradient(to top, rgba(8,10,14,0.86), transparent);
+}
+
+/* The quote band's dandelion sits as a real element rather than a background,
+   so it can carry its own alt text if it ever earns one. */
+.quote-figure { position: relative; }
+.quote-figure img {
+  width: 100%; border-radius: 50%;
+  opacity: 0.92;
+}
+:root[data-theme="light"] .quote-figure img { mix-blend-mode: multiply; opacity: 0.85; }
+
+/* --------------------------------------------------------------------------
+   7. OFFERING ROW MARKS
+   Each row gets a small photograph as well as its arc. The arc says which
+   sixth of the wheel this is; the photograph says what it feels like.
+   -------------------------------------------------------------------------- */
+.offer-thumb {
+  width: 54px; height: 54px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+  filter: saturate(0.75);
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.offer:hover .offer-thumb { filter: saturate(1); transform: scale(1.06); }
+.offer { grid-template-columns: auto auto auto 1fr auto; }
+@media (max-width: 44rem) {
+  .offer { grid-template-columns: auto auto 1fr; }
+  .offer .arc-mark, .offer .offer-go { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   8. MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero--image::before { animation: none; transform: none; }
+}
